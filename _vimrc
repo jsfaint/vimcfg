@@ -285,12 +285,6 @@ if has('python')
   nmap <silent> <leader>u :GundoToggle<cr>
 endif
 
-"Mark
-let g:mwDefaultHighlightingPalette = 'maximum'
-let g:mwAutoLoadMarks = 1
-let g:mwAutoSaveMarks = 1
-set viminfo+=! "Save and restore global vriables
-
 "Vundle
 if has("win32") || has("win64")
   set rtp+=$VIM/vimfiles/bundle/vundle/
