@@ -303,6 +303,7 @@ endif
 Bundle 'AutoComplPop'
 Bundle 'EasyGrep'
 Bundle 'FencView.vim'
+Bundle 'Mark--Karkat'
 Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'cscope_macros.vim'
