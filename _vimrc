@@ -273,8 +273,7 @@ let alternateNoDefaultAlternate=1
 
 "tagbar
 map <silent> <leader>t <esc>:TagbarToggle<cr>
-let g:tagbar_sort = 0
-let g:tagbar_left = 1
+let g:tagbar_sort=0
 
 "EasyGrep
 let EasyGrepMode=0
@@ -286,6 +285,8 @@ if has('python')
 endif
 
 "Vundle
+filetype off
+
 if has("win32") || has("win64")
   set rtp+=$VIM/vimfiles/bundle/vundle/
   call vundle#rc('$VIM/vimfiles/bundle')
@@ -294,10 +295,9 @@ elseif has("unix")
   call vundle#rc()
 endif
 
-Bundle 'AutoComplPop'
 Bundle 'EasyGrep'
-Bundle 'FencView.vim'
 Bundle 'Mark--Karkat'
+Bundle 'SirVer/ultisnips'
 Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'cscope_macros.vim'
@@ -305,10 +305,11 @@ Bundle 'gmarik/vundle'
 Bundle 'jsfaint/gen_tags.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'matchit.zip'
-Bundle 'msanders/snipmate.vim'
+Bundle 'mbbill/fencview'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-speeddating'
 Bundle 'xml.vim'
 Bundle 'yegappan/mru'
+
+filetype plugin indent on
