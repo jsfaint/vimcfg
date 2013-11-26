@@ -25,7 +25,7 @@ let g:mapleader = ","
 "Fast saving
 nmap \w :update<cr>
 
-if has("win32") || has("win64")
+if has("win32")
   "Fast editing of _vimrc
   nmap <leader>e :e! $VIM/_vimrc<cr>
 
@@ -55,14 +55,14 @@ source $VIMRUNTIME/delmenu.vim
 syntax enable
 
 "set font
-if has("win32") || has("win64")
+if has("win32")
   set guifont=consolas:h10
 elseif has("unix")
   set guifont=inconsolata\ 10
 endif
 
 if has("gui_running")
-  if has("win32") || has("win64")
+  if has("win32")
     "Auto Maximize when gvim startup in Windows system.
     au GUIEnter * simalt ~x
   endif
@@ -287,7 +287,7 @@ endif
 "Vundle
 filetype off
 
-if has("win32") || has("win64")
+if has("win32")
   set rtp+=$VIM/vimfiles/bundle/vundle/
   call vundle#rc('$VIM/vimfiles/bundle')
 elseif has("unix")
@@ -311,5 +311,9 @@ Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-speeddating'
 Bundle 'xml.vim'
 Bundle 'yegappan/mru'
+
+if has("win32")
+  Bundle 'vim-ycm'
+endif
 
 filetype plugin indent on
