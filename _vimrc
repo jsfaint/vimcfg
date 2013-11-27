@@ -194,13 +194,6 @@ if has("autocmd")
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Folding
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable folding, I find it very useful
-set foldmethod=syntax
-set nofoldenable
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
@@ -316,36 +309,40 @@ if has('lua')
   endif
 endif
 
-"Vundle
+"neobundle
 filetype off
 
 if has("win32")
-  set rtp+=$VIM/vimfiles/bundle/vundle/
-  call vundle#rc('$VIM/vimfiles/bundle')
+  set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+  call neobundle#rc('$VIM/vimfiles/bundle')
 elseif has("unix")
-  set rtp+=$HOME/.vim/bundle/vundle/
-  call vundle#rc()
+  set rtp+=$HOME/.vim/bundle/neobundle.vim/
+  call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-Bundle 'EasyGrep'
-Bundle 'Mark--Karkat'
-Bundle 'a.vim'
-Bundle 'bufexplorer.zip'
-Bundle 'cscope_macros.vim'
-Bundle 'gmarik/vundle'
-Bundle 'jsfaint/gen_tags.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'matchit.zip'
-Bundle 'mbbill/fencview'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'sjl/gundo.vim'
-Bundle 'tpope/vim-speeddating'
-Bundle 'xml.vim'
-Bundle 'yegappan/mru'
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'EasyGrep'
+NeoBundle 'Mark--Karkat'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'windows' : 'make -f make_mingw32.mak', 'unix' : 'make -f make_unix.mak', }, }
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'a.vim'
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'cscope_macros.vim'
+NeoBundle 'jsfaint/gen_tags.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'matchit.zip'
+NeoBundle 'mbbill/fencview'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'xml.vim'
 
 if has('lua')
-  Bundle 'shougo/neocomplete'
-  Bundle 'shougo/neosnippet'
+  NeoBundle 'shougo/neocomplete'
+  NeoBundle 'shougo/neosnippet'
 endif
-
 filetype plugin indent on
+
+NeoBundleCheck
