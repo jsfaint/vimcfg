@@ -284,6 +284,38 @@ if has('python')
   nmap <silent> <leader>u :GundoToggle<cr>
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+"Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Vundle
 filetype off
 
@@ -297,7 +329,6 @@ endif
 
 Bundle 'EasyGrep'
 Bundle 'Mark--Karkat'
-Bundle 'SirVer/ultisnips'
 Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'cscope_macros.vim'
@@ -308,6 +339,7 @@ Bundle 'matchit.zip'
 Bundle 'mbbill/fencview'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'shougo/neocomplete'
+Bundle 'shougo/neosnippet'
 Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-speeddating'
 Bundle 'xml.vim'
@@ -315,37 +347,3 @@ Bundle 'yegappan/mru'
 
 filetype plugin indent on
 
-"neocomplete
-"Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-"Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-"Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-"Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-"Recommended key-mappings.
-"<CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  "For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-
-"<TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-"<C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
