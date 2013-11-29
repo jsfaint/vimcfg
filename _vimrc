@@ -47,7 +47,6 @@ let $LANG = 'en_US.UTF-8'
 set langmenu=en_US
 source $VIMRUNTIME/delmenu.vim
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -325,7 +324,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'windows' : 'make -f make_mingw32.mak', 'unix' : 'make -f make_unix.mak', }, }
+NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'a.vim'
 NeoBundle 'bufexplorer.zip'
