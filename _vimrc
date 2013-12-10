@@ -177,7 +177,7 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 set completeopt=longest,menuone
 
 "Format the status line
-set statusline=%F\ %m%r%w%y\ Line:%l/%L\ Col:%c\ (%p%%)
+"set statusline=%F\ %m%r%w%y\ Line:%l/%L\ Col:%c\ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
@@ -323,19 +323,25 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
+NeoBundle 'Shougo/unite-help'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'a.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'bufexplorer.zip'
 NeoBundle 'cscope_macros.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
+NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'xml.vim'
 
 if has('lua')
