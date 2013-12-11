@@ -55,9 +55,9 @@ syntax enable
 
 "set font
 if has("win32")
-  set guifont=consolas:h10
+  set guifont=Inconsolata\ for\ Powerline:h10
 elseif has("unix")
-  set guifont=inconsolata\ 10
+  set guifont=inconsolata\ for\ Powerline 10
 endif
 
 if has("gui_running")
@@ -276,6 +276,10 @@ if has('python')
   nmap <silent> <leader>u :GundoToggle<cr>
 endif
 
+"airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 "neocomplete
 if has('lua')
   let g:neocomplete#enable_at_startup = 1
@@ -331,11 +335,13 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bufexplorer.zip'
+NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'cscope_macros.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
+NeoBundle 'mhinz/vim-signify'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
