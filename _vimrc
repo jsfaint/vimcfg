@@ -55,9 +55,9 @@ syntax enable
 
 "set font
 if has("win32")
-  set guifont=Inconsolata\ for\ Powerline:h10
+  set guifont=Inconsolata\ for\ Powerline:h11
 elseif has("unix")
-  set guifont=inconsolata\ for\ Powerline 10
+  set guifont=inconsolata\ for\ Powerline\ 10
 endif
 
 if has("gui_running")
@@ -73,7 +73,6 @@ if has("gui_running")
   set guioptions-=L "Left-hand scrollbar
   set guioptions-=T "Toolbar
   set guioptions-=m "Menu bar
-  set guioptions-=e "tab style
   set guioptions+=c "console dialogs
 else
   colorscheme desert
@@ -278,7 +277,9 @@ endif
 
 "airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+if has('gui_running')
+  let g:airline_powerline_fonts = 1
+endif
 
 "neocomplete
 if has('lua')
