@@ -162,8 +162,6 @@ nmap <leader>fu :se ff=unix<cr>
 "Always show the statusline
 set laststatus=2
 
-set switchbuf=usetab
-
 "Switch to current dir
 nmap <leader>cd :cd %:p:h<cr>
 
@@ -174,9 +172,6 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 set completeopt=longest,menuone
-
-"Format the status line
-"set statusline=%F\ %m%r%w%y\ Line:%l/%L\ Col:%c\ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
