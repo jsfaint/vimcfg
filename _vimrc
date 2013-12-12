@@ -57,7 +57,7 @@ syntax enable
 if has("win32")
   set guifont=Inconsolata\ for\ Powerline:h11
 elseif has("unix")
-  set guifont=inconsolata\ for\ Powerline\ 10
+  set guifont=inconsolata\ for\ Powerline\ 11
 endif
 
 if has("gui_running")
