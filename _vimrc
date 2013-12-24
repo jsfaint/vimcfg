@@ -328,6 +328,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bufexplorer.zip'
