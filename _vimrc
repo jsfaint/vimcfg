@@ -323,8 +323,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
@@ -340,12 +338,10 @@ NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'mhinz/vim-startify'
-NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'xml.vim'
 
 if has('lua')
