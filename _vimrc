@@ -276,12 +276,14 @@ if has('gui_running')
   let g:airline_powerline_fonts = 1
 endif
 
+"Unite.vim
+let g:unite_enable_start_insert = 1
+
 "neocomplete
 if has('lua')
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-  let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+  let g:neocomplete#enable_camel_case = 1
 
   "Plugin key-mappings.
   inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -289,12 +291,6 @@ if has('lua')
 
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
-  " Enable heavy omni completion.
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-
-  " SuperTab like snippets behavior.
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
@@ -302,11 +298,10 @@ if has('lua')
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
 
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
 endif
+
+"vinarise
+let g:vinarise_enable_auto_detect = 1
 
 "neobundle
 filetype off
@@ -343,10 +338,12 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'xml.vim'
+NeoBundle 'Shougo/vinarise.vim'
 
 if has('lua')
   NeoBundle 'shougo/neocomplete'
   NeoBundle 'shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
 endif
 filetype plugin indent on
 
