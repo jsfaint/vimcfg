@@ -265,19 +265,11 @@ let g:tagbar_sort=0
 let EasyGrepMode=0
 let EasyGrepRecursive=1
 
-"gundo
-if has('python')
-  nmap <silent> <leader>u :GundoToggle<cr>
-endif
-
 "airline
 let g:airline#extensions#tabline#enabled = 1
 if has('gui_running')
   let g:airline_powerline_fonts = 1
 endif
-
-"Unite.vim
-let g:unite_enable_start_insert = 1
 
 "neocomplete
 if has('lua')
@@ -321,10 +313,10 @@ NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'bufexplorer.zip'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'cscope_macros.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
@@ -338,7 +330,6 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'xml.vim'
-NeoBundle 'Shougo/vinarise.vim'
 
 if has('lua')
   NeoBundle 'shougo/neocomplete'
