@@ -23,17 +23,17 @@ set mousehide
 let g:mapleader = ","
 
 "Fast saving
-nmap \w :update<cr>
+nmap \w :update<CR>
 
 if has("win32")
   "Fast editing of _vimrc
-  nmap <leader>e :e! $VIM/_vimrc<cr>
+  nmap <Leader>e :e! $VIM/_vimrc<CR>
 
   "When .vimrc is edited, reload it
   autocmd bufwritepost vimrc source /$VIM/_vimrc
 elseif has("unix")
   "Fast editing of .vimrc
-  nmap <leader>e :e! $HOME/.vimrc<cr>
+  nmap <Leader>e :e! $HOME/.vimrc<CR>
 
   "When .vimrc is edited, reload it
   autocmd bufwritepost vimrc source $HOME/.vimrc
@@ -153,8 +153,8 @@ set showmode
 "Favorite filetypes, all set as unix file type.
 set ffs=unix,dos,mac
 
-nmap <leader>fd :se ff=dos<cr>
-nmap <leader>fu :se ff=unix<cr>
+nmap <Leader>fd :se ff=dos<CR>
+nmap <Leader>fu :se ff=unix<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -163,13 +163,13 @@ nmap <leader>fu :se ff=unix<cr>
 set laststatus=2
 
 "Switch to current dir
-nmap <leader>cd :cd %:p:h<cr>
+nmap <Leader>cd :cd %:p:h<CR>
 
 "Move a line of text using control
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nmap <M-j> mz:m+<CR>`z
+nmap <M-k> mz:m-2<CR>`z
+vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
 
 set completeopt=longest,menuone
 
@@ -212,19 +212,19 @@ set smartindent
 " => Filetype generic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "VIM
-autocmd FileType vim map <buffer> <leader><space> :w!<cr>:source %<cr>
+autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "No Highlight
-map <silent> <leader><cr> :noh<cr>
+map <silent> <Leader><CR> :noh<CR>
 
 "Remove the Windows ^M
-noremap \m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 "Remove indenting on empty lines
-nmap <F2> :%s/\s*$//g<cr>:noh<cr>
+nmap <F2> :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
@@ -242,7 +242,7 @@ call Make_undodir()
 "Enable/Disable IME
 autocmd! InsertLeave * set imdisable
 autocmd! InsertEnter * set noimdisable
-noremap / :set noimdisable<cr>/
+noremap / :set noimdisable<CR>/
 
 "Enable omni completion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -258,7 +258,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 let alternateNoDefaultAlternate=1
 
 "tagbar
-map <silent> <leader>t <esc>:TagbarToggle<cr>
+map <silent> <Leader>t <esc>:TagbarToggle<CR>
 let g:tagbar_sort=0
 
 "EasyGrep
@@ -295,6 +295,16 @@ endif
 "vinarise
 let g:vinarise_enable_auto_detect = 1
 
+"unite.vim
+nmap <Leader>u :Unite
+nmap <Leader>ub :Unite buffer<CR>
+nmap <leader>uf :Unite file -start-insert<CR>
+if has('win32')
+  nmap <Leader>ufr :Unite file_rec -start-insert<CR>
+elseif has('unix')
+  nmap <Leader>ufr :Unite file_rec/aysnc -start-insert<CR>
+endif
+
 "neobundle
 filetype off
 
@@ -310,6 +320,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
 NeoBundle 'Shougo/vimshell.vim'
@@ -318,7 +329,6 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'cscope_macros.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
@@ -327,8 +337,11 @@ NeoBundle 'mhinz/vim-signify'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tacroe/unite-mark'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'xml.vim'
 
 if has('lua')
