@@ -43,7 +43,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-let $LANG = 'en_US.UTF-8'
+let $LANG='en_US.UTF-8'
 set langmenu=en_US
 source $VIMRUNTIME/delmenu.vim
 
@@ -55,9 +55,9 @@ syntax enable
 
 "set font
 if has("win32")
-  set guifont=Inconsolata\ for\ Powerline:h11
+  set guifont=consolas:h11
 elseif has("unix")
-  set guifont=inconsolata\ for\ Powerline\ 11
+  set guifont=inconsolata\ 11
 endif
 
 if has("gui_running")
@@ -173,6 +173,9 @@ vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
 
 set completeopt=longest,menuone
 
+"Format the status line
+set statusline=%q%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,7 +234,7 @@ function! Make_undodir()
   if version >= 703 && has('persistent_undo')
     set undofile
     set undodir=$HOME/.undodir/
-    let l:dir= expand("$HOME/.undodir")
+    let l:dir= expand("$HOME/.cache/undodir")
     if !isdirectory(l:dir)
       call mkdir(l:dir, "p")
     endif
@@ -264,12 +267,6 @@ let g:tagbar_sort=0
 "EasyGrep
 let EasyGrepMode=0
 let EasyGrepRecursive=1
-
-"airline
-let g:airline#extensions#tabline#enabled = 1
-if has('gui_running')
-  let g:airline_powerline_fonts = 1
-endif
 
 "neocomplete
 if has('lua')
@@ -316,7 +313,7 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim', 'master'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
@@ -327,22 +324,17 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'mhinz/vim-startify'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tacroe/unite-mark'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'xml.vim'
 
 if has('lua')
   NeoBundle 'shougo/neocomplete'
