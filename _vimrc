@@ -174,7 +174,7 @@ vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
 set completeopt=longest,menuone
 
 "Format the status line
-set statusline=%q%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
+set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
