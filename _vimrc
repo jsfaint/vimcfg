@@ -340,7 +340,11 @@ if has('lua')
   NeoBundle 'shougo/neocomplete'
   NeoBundle 'shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+else
+  NeoBundle 'AutoComplPop'
+  NeoBundle 'msanders/snipmate.vim'
 endif
+
 filetype plugin indent on
 
 NeoBundleCheck
