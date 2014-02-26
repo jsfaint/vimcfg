@@ -232,9 +232,10 @@ nmap <F2> :%s/\s*$//g<CR>:noh<CR>
 "persistent undo
 function! Make_undodir()
   if version >= 703 && has('persistent_undo')
+    let l:dir=expand("$HOME/.cache/undodir")
     set undofile
-    set undodir=$HOME/.undodir/
-    let l:dir= expand("$HOME/.cache/undodir")
+    exec 'set undodir=' . l:dir
+
     if !isdirectory(l:dir)
       call mkdir(l:dir, "p")
     endif
@@ -267,6 +268,9 @@ let g:tagbar_sort=0
 "EasyGrep
 let EasyGrepMode=0
 let EasyGrepRecursive=1
+
+"Gundo
+map <silent> <Leader>gu <esc>:GundoToggle<CR>
 
 "neocomplete
 if has('lua')
