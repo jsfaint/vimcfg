@@ -299,11 +299,11 @@ let g:vinarise_enable_auto_detect = 1
 "unite.vim
 nmap <Leader>u :Unite
 nmap <Leader>ub :Unite buffer<CR>
-nmap <leader>uf :Unite file -start-insert<CR>
+nmap <leader>uf :Unite file<CR>
 if has('win32')
-  nmap <Leader>ufr :Unite file_rec -start-insert<CR>
+  nmap <Leader>ufr :Unite file_rec<CR>
 elseif has('unix')
-  nmap <Leader>ufr :Unite file_rec/aysnc -start-insert<CR>
+  nmap <Leader>ufr :Unite file_rec/aysnc<CR>
 endif
 
 "neobundle
