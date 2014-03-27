@@ -1,6 +1,50 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"neobundle, it should be in the front of vimrc to avoid some weird errors.
+filetype off
+
+if has("win32")
+  set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
+  call neobundle#rc('$VIM/vimfiles/bundle')
+elseif has("unix")
+  set rtp+=$HOME/.vim/bundle/neobundle.vim/
+  call neobundle#rc('$HOME/.vim/bundle/')
+endif
+
+NeoBundleFetch 'Shougo/neobundle.vim', 'master'
+
+NeoBundle 'EasyGrep'
+NeoBundle 'Mark--Karkat'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vinarise.vim'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'a.vim'
+NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'jsfaint/gen_tags.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'matchit.zip'
+NeoBundle 'mbbill/fencview'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'tacroe/unite-mark'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'ujihisa/unite-colorscheme'
+
+if has('lua')
+  NeoBundle 'shougo/neocomplete'
+  NeoBundle 'shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+else
+  NeoBundle 'AutoComplPop'
+  NeoBundle 'msanders/snipmate.vim'
+endif
+
+filetype plugin indent on
+
+NeoBundleCheck
+
 "Get out of VI's compatible mode..
 set nocompatible
 
@@ -297,58 +341,13 @@ endif
 let g:vinarise_enable_auto_detect = 1
 
 "unite.vim
+call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
+
 nmap <Leader>u :Unite
 nmap <Leader>ub :Unite buffer<CR>
-nmap <leader>uf :Unite file<CR>
+nmap <leader>uf :Unite file -start-insert<CR>
 if has('win32')
-  nmap <Leader>ufr :Unite file_rec<CR>
+  nmap <Leader>ufr :Unite file_rec -start-insert<CR>
 elseif has('unix')
-  nmap <Leader>ufr :Unite file_rec/aysnc<CR>
+  nmap <Leader>ufr :Unite file_rec/aysnc -start-insert<CR>
 endif
-
-"neobundle
-filetype off
-
-if has("win32")
-  set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-  call neobundle#rc('$VIM/vimfiles/bundle')
-elseif has("unix")
-  set rtp+=$HOME/.vim/bundle/neobundle.vim/
-  call neobundle#rc('$HOME/.vim/bundle/')
-endif
-
-NeoBundleFetch 'Shougo/neobundle.vim', 'master'
-
-NeoBundle 'EasyGrep'
-NeoBundle 'Mark--Karkat'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/vinarise.vim'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'a.vim'
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'jsfaint/gen_tags.vim'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'matchit.zip'
-NeoBundle 'mbbill/fencview'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tacroe/unite-mark'
-NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'ujihisa/unite-colorscheme'
-
-if has('lua')
-  NeoBundle 'shougo/neocomplete'
-  NeoBundle 'shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
-else
-  NeoBundle 'AutoComplPop'
-  NeoBundle 'msanders/snipmate.vim'
-endif
-
-filetype plugin indent on
-
-NeoBundleCheck
