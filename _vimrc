@@ -27,10 +27,9 @@ NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tacroe/unite-mark'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'hewes/unite-gtags'
 
 if has('lua')
   NeoBundle 'shougo/neocomplete'
