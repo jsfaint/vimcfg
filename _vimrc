@@ -123,7 +123,7 @@ endif
 
 autocmd BufEnter * :syntax sync fromstart
 
-set nocursorline
+set cursorline
 
 "Set numbers of terminal colors
 set t_Co=256
