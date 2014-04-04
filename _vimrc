@@ -13,14 +13,12 @@ NeoBundleFetch 'Shougo/neobundle.vim', 'master'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
-NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'unix' : 'make -f make_unix.mak', }, }
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak'}}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'a.vim'
-NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'hewes/unite-gtags', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
@@ -28,13 +26,15 @@ NeoBundle 'mbbill/fencview'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'hewes/unite-gtags'
+NeoBundle 'ujihisa/unite-colorscheme', {'depends': 'Shougo/unite.vim'}
+NeoBundleLazy 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim', 'autoload': {'commands': [{'name': 'VimShell', 'complete': 'customlist, vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimshellPop'], 'mappings': ['<Plug>(vimshell_']}}
+NeoBundleLazy 'a.vim', {'autoload': {'filetypes': ['c', 'cpp']}}
+NeoBundleLazy 'chrisbra/csv.vim', {'autoload': { 'filetypes': ['csv']}}
 
 if has('lua')
-  NeoBundle 'shougo/neocomplete'
-  NeoBundle 'shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'Shougo/neocomplete'
+  NeoBundle 'Shougo/neosnippet', {'depends': 'Shougo/neocomplete'}
+  NeoBundle 'Shougo/neosnippet-snippets', {'depends': 'Shougo/neosnippet'}
 else
   NeoBundle 'AutoComplPop'
   NeoBundle 'msanders/snipmate.vim'
@@ -63,7 +63,7 @@ set mouse=a
 set mousehide
 
 "Set mapleader
-let g:mapleader = ","
+let g:mapleader=","
 
 "Fast saving
 nmap \w :update<CR>
@@ -123,7 +123,7 @@ endif
 
 autocmd BufEnter * :syntax sync fromstart
 
-set cursorline
+set nocursorline
 
 "Set numbers of terminal colors
 set t_Co=256
@@ -311,15 +311,16 @@ let g:tagbar_sort=0
 "EasyGrep
 let EasyGrepMode=0
 let EasyGrepRecursive=1
+let EasyGrepIgnoreCase=0
 
 "Gundo
 map <silent> <Leader>gu <esc>:GundoToggle<CR>
 
 "neocomplete
 if has('lua')
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_camel_case = 1
+  let g:neocomplete#enable_at_startup=1
+  let g:neocomplete#enable_smart_case=1
+  let g:neocomplete#enable_auto_select=1
 
   "Plugin key-mappings.
   inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -333,20 +334,21 @@ if has('lua')
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
-
 endif
 
 "vinarise
-let g:vinarise_enable_auto_detect = 1
+let g:vinarise_enable_auto_detect=1
 
 "unite.vim
 call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
+let g:unite_source_rec_max_cache_files=0
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
 
 nmap <Leader>u :Unite
 nmap <Leader>ub :Unite buffer<CR>
 nmap <leader>uf :Unite file -start-insert<CR>
 if has('win32')
-  nmap <Leader>ufr :Unite file_rec -start-insert<CR>
+  nmap <Leader>ur :Unite file_rec -start-insert<CR>
 elseif has('unix')
-  nmap <Leader>ufr :Unite file_rec/aysnc -start-insert<CR>
+  nmap <Leader>ur :Unite file_rec/aysnc -start-insert<CR>
 endif
