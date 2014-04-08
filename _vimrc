@@ -9,7 +9,7 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim', 'master'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
@@ -27,9 +27,9 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'ujihisa/unite-colorscheme', {'depends': 'Shougo/unite.vim'}
-NeoBundleLazy 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim', 'autoload': {'commands': [{'name': 'VimShell', 'complete': 'customlist, vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimshellPop'], 'mappings': ['<Plug>(vimshell_']}}
-NeoBundleLazy 'a.vim', {'autoload': {'filetypes': ['c', 'cpp']}}
-NeoBundleLazy 'chrisbra/csv.vim', {'autoload': { 'filetypes': ['csv']}}
+NeoBundle 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim'}
+NeoBundle 'a.vim'
+NeoBundle 'chrisbra/csv.vim'
 
 if has('lua')
   NeoBundle 'Shougo/neocomplete'
