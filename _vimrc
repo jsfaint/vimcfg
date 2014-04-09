@@ -307,6 +307,8 @@ let alternateNoDefaultAlternate=1
 "tagbar
 map <silent> <Leader>t <esc>:TagbarToggle<CR>
 let g:tagbar_sort=0
+let g:tagbar_left=1
+let g:tagbar_compact=1
 
 "EasyGrep
 let EasyGrepMode=0
