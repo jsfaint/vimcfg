@@ -352,5 +352,5 @@ nmap <leader>uf :Unite file -start-insert<CR>
 if has('win32')
   nmap <Leader>ur :Unite file_rec -start-insert<CR>
 elseif has('unix')
-  nmap <Leader>ur :Unite file_rec/aysnc -start-insert<CR>
+  nmap <Leader>ur :Unite file_rec/async -start-insert<CR>
 endif
