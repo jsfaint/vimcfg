@@ -99,6 +99,8 @@ syntax enable
 "set font
 if has("win32")
   set guifont=consolas:h11
+elseif has("mac")
+  set guifont=Courier\ New:h13
 elseif has("unix")
   set guifont=inconsolata\ 11
 endif

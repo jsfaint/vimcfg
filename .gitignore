@@ -2,3 +2,7 @@ vim74
 vimfiles/.netrwhist
 vimfiles/bundle
 tags
+GTAGS
+GRTAGS
+GPATH
+.DS_Store
