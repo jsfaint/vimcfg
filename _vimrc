@@ -15,7 +15,7 @@ NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak'}}
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'hewes/unite-gtags', {'depends': 'Shougo/unite.vim'}
