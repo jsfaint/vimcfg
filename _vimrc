@@ -289,9 +289,11 @@ endfunction
 call Make_undodir()
 
 "Enable/Disable IME
-autocmd! InsertLeave * set imdisable
-autocmd! InsertEnter * set noimdisable
-noremap / :set noimdisable<CR>/
+if has("win32")
+  autocmd! InsertLeave * set imdisable
+  autocmd! InsertEnter * set noimdisable
+  noremap / :set noimdisable<CR>/
+endif
 
 "Enable omni completion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
