@@ -200,6 +200,7 @@ set ffs=unix,dos,mac
 
 nmap <Leader>fd :se ff=dos<CR>
 nmap <Leader>fu :se ff=unix<CR>
+nmap <leader>fm :se ff=mac<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line
