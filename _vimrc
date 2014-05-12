@@ -16,20 +16,22 @@ NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
+NeoBundle 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim'}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'a.vim'
+NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'hewes/unite-gtags', {'depends': 'Shougo/unite.vim'}
+NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'ujihisa/unite-colorscheme', {'depends': 'Shougo/unite.vim'}
-NeoBundle 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim'}
-NeoBundle 'a.vim'
-NeoBundle 'chrisbra/csv.vim'
 
 if has('lua')
   NeoBundle 'Shougo/neocomplete'
@@ -330,8 +332,8 @@ if has('lua')
   let g:neocomplete#enable_auto_select=1
 
   "Plugin key-mappings.
-  inoremap <expr><C-g>     neocomplete#undo_completion()
-  inoremap <expr><C-l>     neocomplete#complete_common_string()
+  inoremap <expr><C-g> neocomplete#undo_completion()
+  inoremap <expr><C-l> neocomplete#complete_common_string()
 
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
