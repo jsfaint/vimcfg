@@ -197,11 +197,10 @@ set showmode
 " => Fileformats
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Favorite filetypes, all set as unix file type.
-set ffs=unix,dos,mac
+set ffs=unix,dos
 
 nmap <Leader>fd :se ff=dos<CR>
 nmap <Leader>fu :se ff=unix<CR>
-nmap <leader>fm :se ff=mac<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line
