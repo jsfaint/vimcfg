@@ -9,9 +9,10 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
-NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
