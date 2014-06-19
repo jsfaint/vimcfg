@@ -13,17 +13,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
-NeoBundle 'Shougo/unite-outline', {'depends': 'Shougo/unite.vim'}
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim'}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
 NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'hewes/unite-gtags', {'depends': 'Shougo/unite.vim'}
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview'
@@ -31,7 +29,10 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'ujihisa/unite-colorscheme', {'depends': 'Shougo/unite.vim'}
+
+"Extension for CtrlP
+NeoBundle 'mattn/ctrlp-register', {'depends': 'kien/ctrlp.vim'}
+NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'kien/ctrlp.vim'}
 
 if has('lua')
   NeoBundle 'Shougo/neocomplete'
@@ -347,16 +348,6 @@ endif
 "vinarise
 let g:vinarise_enable_auto_detect=1
 
-"unite.vim
-call unite#custom#source('file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
-let g:unite_source_rec_max_cache_files=0
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
-
-nmap <Leader>u :Unite
-nmap <Leader>ub :Unite buffer<CR>
-nmap <leader>uf :Unite file -start-insert<CR>
-if has('win32')
-  nmap <Leader>ur :Unite file_rec -start-insert<CR>
-elseif has('unix')
-  nmap <Leader>ur :Unite file_rec/async -start-insert<CR>
-endif
+"CtrlP
+let g:ctrlp_extensions = ['funky', 'register']
+let g:ctrlp_funky_syntax_highlight = 1
