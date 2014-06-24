@@ -9,7 +9,7 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim', {'branch': 'master'}
+NeoBundleFetch 'Shougo/neobundle.vim', 'master'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
