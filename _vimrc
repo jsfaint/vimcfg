@@ -9,7 +9,7 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim', {'branch': 'master'}
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
@@ -31,7 +31,6 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 
 "Extension for CtrlP
-NeoBundle 'mattn/ctrlp-register', {'depends': 'kien/ctrlp.vim'}
 NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'kien/ctrlp.vim'}
 
 if has('lua')
@@ -349,5 +348,5 @@ endif
 let g:vinarise_enable_auto_detect=1
 
 "CtrlP
-let g:ctrlp_extensions = ['funky', 'register']
+let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
