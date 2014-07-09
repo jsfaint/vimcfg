@@ -31,7 +31,7 @@ Usage
 
 Other
 -----
-If you want more information about usage of `neobundle`
+If you want more information about usage of `neobundle`  
 Please refer [here](https://github.com/Shougo/neobundle.vim/blob/master/README.md) or `:help neobundle`
 
 If you want to custom your own plugins list, you can fork this repository.
