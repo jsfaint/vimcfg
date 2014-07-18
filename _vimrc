@@ -176,8 +176,8 @@ set incsearch
 set hlsearch
 
 "Visual Search
-vnoremap * y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
-vnoremap # y?<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+xnoremap * y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+xnoremap # y?<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
 
 "Set magic on
 set magic
@@ -350,3 +350,4 @@ let g:vinarise_enable_auto_detect=1
 "CtrlP
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_mruf_relative = 1
