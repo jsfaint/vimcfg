@@ -9,12 +9,12 @@ elseif has("unix")
   call neobundle#rc('$HOME/.vim/bundle/')
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim', 'master'
+NeoBundleFetch 'shougo/neobundle.vim', 'master'
 
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
-NeoBundle 'Shougo/vimshell.vim', {'depends': 'Shougo/vimproc.vim'}
+NeoBundle 'Shougo/vimshell.vim', {'depends': 'shougo/vimproc.vim'}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
@@ -37,9 +37,6 @@ if has('lua')
   NeoBundle 'Shougo/neocomplete'
   NeoBundle 'Shougo/neosnippet', {'depends': 'Shougo/neocomplete'}
   NeoBundle 'Shougo/neosnippet-snippets', {'depends': 'Shougo/neosnippet'}
-else
-  NeoBundle 'AutoComplPop'
-  NeoBundle 'msanders/snipmate.vim'
 endif
 
 filetype plugin indent on
@@ -75,7 +72,7 @@ if has("win32")
   nmap <Leader>e :e! $VIM/_vimrc<CR>
 
   "When .vimrc is edited, reload it
-  autocmd bufwritepost vimrc source /$VIM/_vimrc
+  autocmd bufwritepost vimrc source $VIM/_vimrc
 elseif has("unix")
   "Fast editing of .vimrc
   nmap <Leader>e :e! $HOME/.vimrc<CR>
@@ -101,7 +98,7 @@ syntax enable
 "set font
 if has("win32")
   set guifont=consolas:h11
-elseif has("mac")
+elseif has("macunix")
   set guifont=Courier\ New:h13
 elseif has("unix")
   set guifont=inconsolata\ 11
@@ -211,12 +208,6 @@ set laststatus=2
 
 "Switch to current dir
 nmap <Leader>cd :cd %:p:h<CR>
-
-"Move a line of text using control
-nmap <M-j> mz:m+<CR>`z
-nmap <M-k> mz:m-2<CR>`z
-vmap <M-j> :m'>+<CR>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<CR>`>my`<mzgv`yo`z
 
 set completeopt=longest,menuone
 
