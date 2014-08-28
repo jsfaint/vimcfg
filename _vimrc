@@ -33,11 +33,16 @@ NeoBundle 'tpope/vim-speeddating'
 "Extension for CtrlP
 NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'kien/ctrlp.vim'}
 
-if has('lua')
+if has('lua') && has('win32')
   NeoBundle 'Shougo/neocomplete'
   NeoBundle 'Shougo/neosnippet', {'depends': 'Shougo/neocomplete'}
   NeoBundle 'Shougo/neosnippet-snippets', {'depends': 'Shougo/neosnippet'}
+else
+  NeoBundle 'valloric/youcompleteme'
+  NeoBundle 'sirver/ultisnips'
+  NeoBundle 'honza/vim-snippets', {'depends': 'sirver/ultisnips'}
 endif
+
 
 filetype plugin indent on
 
@@ -316,7 +321,7 @@ let EasyGrepIgnoreCase=0
 map <silent> <Leader>gu <esc>:GundoToggle<CR>
 
 "neocomplete
-if has('lua')
+if has('lua') && has('win32')
   let g:neocomplete#enable_at_startup=1
   let g:neocomplete#enable_smart_case=1
   let g:neocomplete#enable_auto_select=1
@@ -342,3 +347,11 @@ let g:vinarise_enable_auto_detect=1
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_mruf_relative = 1
+
+"YouCompleteMe
+if has('unix')
+  let g:ycm_global_ycm_extra_conf = expand($HOME) . '/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  nnoremap <leader>jd :YcmCompleter GoTo<CR>
+endif
