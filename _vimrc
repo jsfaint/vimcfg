@@ -350,7 +350,7 @@ let g:ctrlp_mruf_relative = 1
 
 "YouCompleteMe
 if has('unix')
-  let g:ycm_global_ycm_extra_conf = expand($HOME) . '/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+  let g:ycm_global_ycm_extra_conf = expand($HOME) . '/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   nnoremap <leader>jd :YcmCompleter GoTo<CR>
