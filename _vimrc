@@ -6,7 +6,7 @@ if has("win32")
   call neobundle#rc('$VIM/vimfiles/bundle')
 elseif has("unix")
   set rtp+=$HOME/.vim/bundle/neobundle.vim/
-  call neobundle#rc('$HOME/.vim/bundle/')
+  call neobundle#rc('$HOME/.vim/bundle')
 endif
 
 NeoBundleFetch 'shougo/neobundle.vim', 'master'
@@ -92,7 +92,6 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 let $LANG='en_US.UTF-8'
 set langmenu=en_US
-source $VIMRUNTIME/delmenu.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -292,13 +291,6 @@ if has("win32")
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
 endif
-
-"Enable omni completion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
