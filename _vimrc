@@ -14,7 +14,6 @@ NeoBundleFetch 'shougo/neobundle.vim', 'master'
 NeoBundle 'EasyGrep'
 NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
-NeoBundle 'Shougo/vimshell.vim', {'depends': 'shougo/vimproc.vim'}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'a.vim'
@@ -38,7 +37,7 @@ if has('lua') && has('win32')
   NeoBundle 'Shougo/neocomplete'
   NeoBundle 'Shougo/neosnippet', {'depends': 'Shougo/neocomplete'}
   NeoBundle 'Shougo/neosnippet-snippets', {'depends': 'Shougo/neosnippet'}
-else
+elseif v:version >= 704 || (v:version == 703 && has('patch584'))
   NeoBundle 'valloric/youcompleteme'
   NeoBundle 'sirver/ultisnips'
   NeoBundle 'honza/vim-snippets', {'depends': 'sirver/ultisnips'}
@@ -342,7 +341,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_mruf_relative = 1
 
 "YouCompleteMe
-if has('unix')
+if has('unix') && (v:version >= 704 || (v:version == 703 && has('patch584')))
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   nnoremap <leader>jd :YcmCompleter GoTo<CR>
