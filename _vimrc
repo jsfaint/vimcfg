@@ -11,13 +11,12 @@ endif
 
 NeoBundleFetch 'shougo/neobundle.vim', 'master'
 
-NeoBundle 'EasyGrep'
-NeoBundle 'Mark--Karkat'
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'a.vim'
 NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'dimasg/vim-mark'
+NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'kien/ctrlp.vim'
@@ -346,3 +345,9 @@ if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   nnoremap <leader>jd :YcmCompleter GoTo<CR>
 endif
+
+"Mark
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwAutoLoadMarks = 1
+let g:mwAutoSaveMarks = 1
+set viminfo+=! "Save and restore global vriables
