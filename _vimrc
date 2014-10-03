@@ -19,7 +19,6 @@ NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'lendyzhang/ex-syntax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
@@ -30,6 +29,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 
 "Extension for CtrlP
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'kien/ctrlp.vim'}
 
 if has('lua') && has('win32')
