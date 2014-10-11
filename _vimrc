@@ -30,7 +30,7 @@ NeoBundle 'tpope/vim-speeddating'
 
 "Extension for CtrlP
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'kien/ctrlp.vim'}
+NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'ctrlpvim/ctrlp.vim'}
 
 if has('lua') && has('win32')
   NeoBundle 'Shougo/neocomplete'
