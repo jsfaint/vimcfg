@@ -3,13 +3,13 @@ filetype off
 
 if has("win32")
   set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
-  call neobundle#rc('$VIM/vimfiles/bundle')
+  call neobundle#begin('$VIM/vimfiles/bundle')
 elseif has("unix")
   set rtp+=$HOME/.vim/bundle/neobundle.vim/
-  call neobundle#rc('$HOME/.vim/bundle')
+  call neobundle#begin('$HOME/.vim/bundle')
 endif
 
-NeoBundleFetch 'shougo/neobundle.vim', 'master'
+NeoBundleFetch 'shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'Shougo/vinarise.vim'
@@ -42,6 +42,8 @@ elseif v:version > 703 || (v:version == 703 && has('patch584'))
   NeoBundle 'honza/vim-snippets', {'depends': 'sirver/ultisnips'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme'}
 endif
+
+call neobundle#end()
 
 filetype plugin indent on
 
