@@ -11,9 +11,6 @@ endif
 
 NeoBundleFetch 'shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
-NeoBundle 'Shougo/vinarise.vim'
-NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
@@ -25,21 +22,22 @@ NeoBundle 'matchit.zip'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
+NeoBundle 'shougo/vinarise.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'yggdroot/indentLine'
 
 "Extension for CtrlP
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'ctrlpvim/ctrlp.vim'}
 
 if has('lua') && has('win32')
-  NeoBundle 'Shougo/neocomplete'
-  NeoBundle 'Shougo/neosnippet', {'depends': 'Shougo/neocomplete'}
-  NeoBundle 'Shougo/neosnippet-snippets', {'depends': 'Shougo/neosnippet'}
+  NeoBundle 'shougo/neocomplete'
+  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets'}
 elseif v:version > 703 || (v:version == 703 && has('patch584'))
   NeoBundle 'valloric/youcompleteme'
-  NeoBundle 'sirver/ultisnips'
-  NeoBundle 'honza/vim-snippets', {'depends': 'sirver/ultisnips'}
+  NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme'}
 endif
 
