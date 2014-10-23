@@ -12,6 +12,7 @@ endif
 NeoBundleFetch 'shougo/neobundle.vim'
 
 NeoBundle 'chrisbra/csv.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -27,10 +28,6 @@ NeoBundle 'shougo/vinarise.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
-
-"Extension for CtrlP
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky', {'depends': 'ctrlpvim/ctrlp.vim'}
 
 if has('lua') && has('win32')
   NeoBundle 'shougo/neocomplete'
