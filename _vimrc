@@ -99,16 +99,14 @@ syntax enable
 if has("win32")
   set guifont=consolas:h11
 elseif has("macunix")
-  set guifont=Courier\ New:h13
+  set guifont=monaco:h12
 elseif has("unix")
   set guifont=inconsolata\ 11
 endif
 
 if has("gui_running")
-  if has("win32")
-    "Auto Maximize when gvim startup in Windows system.
-    au GUIEnter * simalt ~x
-  endif
+  set lines=999
+  set columns=999
 
   colorscheme desert
 
