@@ -25,7 +25,7 @@ Usage
   ln -s vimcfg/vimfiles ~/.vim
   ```
 
-4. Install ohter plugins
+4. Install other plugins
 
   Open Vim then neobundle will install other plugins automatically
 
