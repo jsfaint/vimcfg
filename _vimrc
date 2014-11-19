@@ -1,3 +1,6 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if !1 | finish | endif
+
 "neobundle, it should be in the front of vimrc to avoid some weird errors.
 filetype off
 
@@ -105,8 +108,12 @@ elseif has("unix")
 endif
 
 if has("gui_running")
-  set lines=999
-  set columns=999
+  if has("win32")
+    au GUIEnter * simalt ~x
+  else
+    set lines=999
+    set columns=999
+  endif
 
   colorscheme desert
 

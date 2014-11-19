@@ -1,7 +1,7 @@
 vimcfg
 ======
 
-Jason's personal vim configurations, plugin was managed by neobundle.
+This repository is my personal vim configurations, and the plugins are managed by neobundle.
 
 Usage
 -----
