@@ -20,7 +20,7 @@ NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
-NeoBundle 'lendyzhang/ex-syntax'
+NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 's3rvac/autofenc'
@@ -71,18 +71,11 @@ let g:mapleader=","
 "Fast saving
 nmap \w :update<CR>
 
+"Fast editing of vimrc
 if has("win32")
-  "Fast editing of _vimrc
   nmap <Leader>e :e! $VIM/_vimrc<CR>
-
-  "When .vimrc is edited, reload it
-  autocmd bufwritepost vimrc source $VIM/_vimrc
 elseif has("unix")
-  "Fast editing of .vimrc
   nmap <Leader>e :e! $HOME/.vimrc<CR>
-
-  "When .vimrc is edited, reload it
-  autocmd bufwritepost vimrc source $HOME/.vimrc
 endif
 
 set encoding=utf-8
@@ -115,7 +108,7 @@ if has("gui_running")
     set columns=999
   endif
 
-  colorscheme desert
+  colorscheme emax
 
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
