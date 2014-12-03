@@ -14,6 +14,7 @@ endif
 
 NeoBundleFetch 'shougo/neobundle.vim'
 
+NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
@@ -23,6 +24,7 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
+NeoBundle 'mhinz/vim-signify'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -32,9 +34,11 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
-if has('lua') && has('win32')
-  NeoBundle 'shougo/neocomplete'
-  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets'}
+if has('win32')
+  if has('lua')
+    NeoBundle 'shougo/neocomplete'
+    NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets'}
+  endif
 elseif v:version > 703 || (v:version == 703 && has('patch584'))
   NeoBundle 'valloric/youcompleteme'
   NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets'}
@@ -93,11 +97,11 @@ syntax enable
 
 "set font
 if has("win32")
-  set guifont=consolas:h11
+  set guifont=Sauce\ Code\ Powerline:h12
 elseif has("macunix")
-  set guifont=monaco:h12
+  set guifont=Sauce\ Code\ Powerline:h12
 elseif has("unix")
-  set guifont=inconsolata\ 11
+  set guifont=Sauce\ Code\ Powerline\ 12
 endif
 
 if has("gui_running")
@@ -346,3 +350,7 @@ let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 let g:mwAutoSaveMarks = 1
 set viminfo+=! "Save and restore global vriables
+
+"airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
