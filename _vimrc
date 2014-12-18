@@ -97,11 +97,11 @@ syntax enable
 
 "set font
 if has("win32")
-  set guifont=Sauce\ Code\ Powerline:h12
+  set guifont=Sauce\ Code\ Powerline:h10
 elseif has("macunix")
   set guifont=Sauce\ Code\ Powerline:h12
 elseif has("unix")
-  set guifont=Sauce\ Code\ Powerline\ 12
+  set guifont=Sauce\ Code\ Powerline\ 11
 endif
 
 if has("gui_running")
@@ -306,6 +306,7 @@ let g:tagbar_compact=1
 let EasyGrepMode=0
 let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=0
+let g:EasyGrepFileToExclude="GPATH,GRTAGS,GTAGS"
 
 "Gundo
 map <silent> <Leader>gu <esc>:GundoToggle<CR>
