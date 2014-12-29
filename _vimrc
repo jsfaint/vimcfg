@@ -14,7 +14,6 @@ endif
 
 NeoBundleFetch 'shougo/neobundle.vim'
 
-NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
@@ -24,15 +23,19 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
-NeoBundle 'mhinz/vim-signify'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
+
+if !has('win32')
+  NeoBundle 'bling/vim-airline'
+  NeoBundle 'mhinz/vim-signify'
+  NeoBundle 'scrooloose/syntastic'
+endif
 
 if has('win32')
   if has('lua')
@@ -88,6 +91,10 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 let $LANG='en_US.UTF-8'
 set langmenu=en_US
+if has('win32')
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -353,5 +360,7 @@ let g:mwAutoSaveMarks = 1
 set viminfo+=! "Save and restore global vriables
 
 "airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+if !has('win32')
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
+endif
