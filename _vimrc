@@ -19,33 +19,28 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'jsfaint/gen_tags.vim'
+NeoBundle 'jsfaint/gen_tags.vim', {'enabld': has('cscope')}
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
-NeoBundle 'shougo/vinarise.vim'
-NeoBundle 'sjl/gundo.vim'
+NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
+NeoBundle 'sjl/gundo.vim', {'enabled': has('python')}
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
-if !has('win32')
+if has('win32')
+  NeoBundle 'shougo/neocomplete', {'enabled': has('lua')}
+  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'enabled': has('lua')}
+else
   NeoBundle 'bling/vim-airline'
   NeoBundle 'mhinz/vim-signify'
   NeoBundle 'scrooloose/syntastic'
-endif
-
-if has('win32')
-  if has('lua')
-    NeoBundle 'shougo/neocomplete'
-    NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets'}
-  endif
-elseif v:version > 703 || (v:version == 703 && has('patch584'))
-  NeoBundle 'valloric/youcompleteme'
-  NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets'}
-  NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme'}
+  NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
+  NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
+  NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
 endif
 
 call neobundle#end()
@@ -114,9 +109,6 @@ endif
 if has("gui_running")
   if has("win32")
     au GUIEnter * simalt ~x
-  else
-    set lines=999
-    set columns=999
   endif
 
   colorscheme emax
@@ -300,9 +292,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"A
-let alternateNoDefaultAlternate=1
-
 "tagbar
 map <silent> <Leader>t <esc>:TagbarToggle<CR>
 let g:tagbar_sort=0
