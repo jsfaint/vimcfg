@@ -18,6 +18,7 @@ NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'fatih/vim-go'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim', {'disabled': !has('cscope')}
 NeoBundle 'lendyzhang/vim-emax'
