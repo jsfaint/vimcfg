@@ -303,7 +303,7 @@ let g:tagbar_compact=1
 let EasyGrepMode=0
 let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=0
-let g:EasyGrepFileToExclude="GPATH,GRTAGS,GTAGS"
+let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
 
 "Gundo
 map <silent> <Leader>gu <esc>:GundoToggle<CR>
@@ -327,9 +327,6 @@ if has('lua') && has('win32')
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
 endif
-
-"vinarise
-let g:vinarise_enable_auto_detect=1
 
 "CtrlP
 let g:ctrlp_extensions = ['funky']
