@@ -20,7 +20,7 @@ NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'jsfaint/gen_tags.vim', {'disabled': !has('cscope')}
+NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
@@ -81,6 +81,7 @@ elseif has("unix")
   nmap <Leader>e :e! $HOME/.vimrc<CR>
 endif
 
+"Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -296,13 +297,13 @@ endif
 "tagbar
 map <silent> <Leader>t <esc>:TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_left=1
+let g:tagbar_left=0
 let g:tagbar_compact=1
 
 "EasyGrep
 let EasyGrepMode=0
 let EasyGrepRecursive=1
-let EasyGrepIgnoreCase=0
+let EasyGrepIgnoreCase=1
 let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
 
 "Gundo
@@ -329,9 +330,9 @@ if has('lua') && has('win32')
 endif
 
 "CtrlP
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_funky_syntax_highlight = 1
 let g:ctrlp_mruf_relative = 1
+let g:ctrlp_regexp = 1
+let g:ctrlp_max_files = 0
 
 "YouCompleteMe
 if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
