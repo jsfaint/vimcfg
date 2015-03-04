@@ -18,7 +18,6 @@ NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'fatih/vim-go'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
@@ -113,7 +112,7 @@ if has("gui_running")
     au GUIEnter * simalt ~x
   endif
 
-  colorscheme emax
+  colorscheme desert
 
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
