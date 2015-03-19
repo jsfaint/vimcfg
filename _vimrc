@@ -267,7 +267,7 @@ map <silent> <Leader><CR> :noh<CR>
 noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 "Remove indenting on empty lines
-nmap <F2> :%s/\s*$//g<CR>:noh<CR>
+nmap <leader>l :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
