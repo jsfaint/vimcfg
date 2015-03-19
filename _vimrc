@@ -23,11 +23,11 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
+NeoBundle 'mbbill/undotree'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
-NeoBundle 'sjl/gundo.vim', {'disabled': !has('python')}
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
