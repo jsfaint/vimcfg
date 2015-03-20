@@ -305,9 +305,6 @@ let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=1
 let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
 
-"Gundo
-map <silent> <Leader>gu <esc>:GundoToggle<CR>
-
 "neocomplete
 if has('lua') && has('win32')
   let g:neocomplete#enable_at_startup=1
@@ -332,6 +329,7 @@ endif
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_max_files = 0
+let g:ctrlp_clear_cache_on_exit = 0
 
 "YouCompleteMe
 if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
@@ -351,3 +349,7 @@ if !has('win32')
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
 endif
+
+"undotree
+nmap <leader>u :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 2
