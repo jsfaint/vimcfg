@@ -14,6 +14,7 @@ endif
 
 NeoBundleFetch 'shougo/neobundle.vim'
 
+NeoBundle 'a.vim'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
@@ -295,16 +296,21 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"A
+let g:alternateNoDefaultAlternate = 1
+nmap <leader>a :A<cr>
+
 "tagbar
 map <silent> <Leader>t <esc>:TagbarToggle<CR>
 let g:tagbar_sort=0
-let g:tagbar_left=0
+let g:tagbar_left=1
 let g:tagbar_compact=1
 
 "EasyGrep
 let EasyGrepMode=0
 let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=1
+let EasyGrepReplaceWindowMode=2
 let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
 
 "neocomplete
