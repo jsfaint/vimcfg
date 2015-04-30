@@ -28,7 +28,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
+NeoBundle 'shougo/vimproc.vim', {'build': 'make'}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
@@ -94,13 +94,10 @@ if has('win32')
   source $VIMRUNTIME/menu.vim
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Enable syntax highlight
 syntax enable
 
-"set font
+"set GUI font
 if has("win32")
   set guifont=Sauce\ Code\ Powerline:h10
 elseif has("macunix")
@@ -133,9 +130,6 @@ set nocursorline
 "Set numbers of terminal colors
 set t_Co=256
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM UI
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Set 7 lines to the curors - when moving vertical..
 set so=7
 
@@ -195,18 +189,12 @@ set matchtime=10
 "Show mode, insert/replaced/visual/etc
 set showmode
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fileformats
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Favorite filetypes, all set as unix file type.
+"Filetypes
 set ffs=unix,dos
 
 nmap <Leader>fd :se ff=dos<CR>
 nmap <Leader>fu :se ff=unix<CR>
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
 "Always show the statusline
 set laststatus=2
 
@@ -218,9 +206,6 @@ set completeopt=longest,menuone
 "Format the status line
 set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files and backups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Turn backup off
 set nobackup
 set nowritebackup
@@ -231,9 +216,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -244,24 +226,15 @@ au FileType make setl noexpandtab
 
 set ambiwidth=double
 
-""""""""""""""""""""""""""""""
-" => Indent
-""""""""""""""""""""""""""""""
 "Auto indent
 set autoindent
 
 "Smart indent
 set smartindent
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Filetype generic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"VIM
+"Quick source for VimL
 autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "No Highlight
 map <silent> <Leader><CR> :noh<CR>
 
@@ -292,7 +265,7 @@ if has("win32")
   noremap / :set noimdisable<CR>/
 endif
 
-" Enable omni completion.
+"Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
