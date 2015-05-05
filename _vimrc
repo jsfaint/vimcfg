@@ -30,19 +30,26 @@ NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'shougo/vimproc.vim', {'build': 'make'}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
 if has('win32')
   NeoBundle 'shougo/neocomplete', {'disabled': !has('lua')}
   NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'disabled': !has('lua')}
-else
+endif
+
+if has('unix')
   NeoBundle 'bling/vim-airline'
   NeoBundle 'mhinz/vim-signify'
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
   NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
+endif
+
+if has('mac')
+  NeoBundle 'rizzatti/dash.vim'
 endif
 
 call neobundle#end()
@@ -292,6 +299,20 @@ let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=1
 let EasyGrepReplaceWindowMode=2
 let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
+
+if executable('ag')
+    set grepprg=ag
+    let EasyGrepCommand = 1
+elseif executable('ack')
+    set grepprg=ack
+    let EasyGrepCommand = 1
+elseif executable('grep')
+    set grepprg=grep
+    let EasyGrepCommand = 1
+else
+    set grepprg=''
+    let EasyGrepCommand = 0
+endif
 
 "neocomplete
 if has('lua') && has('win32')
