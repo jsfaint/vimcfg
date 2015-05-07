@@ -264,7 +264,7 @@ endfunction
 call Make_undodir()
 
 "Enable/Disable IME
-if has('gui_running') && (has("win32") || has('mac'))
+if has('gui_running') && (has("win32"))
   autocmd! InsertLeave * set imdisable
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
