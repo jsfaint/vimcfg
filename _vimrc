@@ -12,8 +12,6 @@ elseif has("unix")
   call neobundle#begin('$HOME/.vim/bundle')
 endif
 
-NeoBundleFetch 'shougo/neobundle.vim'
-
 NeoBundle 'a.vim'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -28,7 +26,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'shougo/vimproc.vim', {'build': 'make'}
+NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-speeddating'
@@ -266,7 +264,7 @@ endfunction
 call Make_undodir()
 
 "Enable/Disable IME
-if has("win32")
+if has('gui_running') && (has("win32") || has('mac'))
   autocmd! InsertLeave * set imdisable
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
