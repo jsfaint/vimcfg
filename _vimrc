@@ -1,3 +1,4 @@
+" vim:shiftwidth=2:tabstop=2:expandtab
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -13,6 +14,7 @@ elseif has("unix")
 endif
 
 NeoBundle 'a.vim'
+NeoBundle 'chrisbra/colorizer'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
@@ -21,11 +23,14 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 's3rvac/autofenc'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -40,7 +45,6 @@ endif
 if has('unix')
   NeoBundle 'bling/vim-airline'
   NeoBundle 'mhinz/vim-signify'
-  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
   NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
@@ -116,7 +120,7 @@ if has("gui_running")
     au GUIEnter * simalt ~x
   endif
 
-  colorscheme desert
+  colorscheme emax
 
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
@@ -158,6 +162,7 @@ set backspace=eol,start,indent
 "Set listchars
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<
 set list
+hi Specialkey guifg=grey0
 
 "Wrap lines
 set wrap
@@ -224,9 +229,7 @@ endif
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-set tabstop=8
-
-au FileType html,vim,javascript setl shiftwidth=2 tabstop=2 expandtab
+set tabstop=4
 au FileType make setl noexpandtab
 
 set ambiwidth=double
@@ -296,20 +299,21 @@ let EasyGrepMode=0
 let EasyGrepRecursive=1
 let EasyGrepIgnoreCase=1
 let EasyGrepReplaceWindowMode=2
+let EasyGrepJumpToMatch=0
 let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
 
 if executable('ag')
-    set grepprg=ag
-    let EasyGrepCommand = 1
+  set grepprg=ag
+  let EasyGrepCommand = 1
 elseif executable('ack')
-    set grepprg=ack
-    let EasyGrepCommand = 1
+  set grepprg=ack
+  let EasyGrepCommand = 1
 elseif executable('grep')
-    set grepprg=grep
-    let EasyGrepCommand = 1
+  set grepprg=grep
+  let EasyGrepCommand = 1
 else
-    set grepprg=''
-    let EasyGrepCommand = 0
+  set grepprg=''
+  let EasyGrepCommand = 0
 endif
 
 "neocomplete
@@ -340,10 +344,11 @@ let g:ctrlp_clear_cache_on_exit = 0
 
 "YouCompleteMe
 if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_select_completion = ['<Enter>', '<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ycm_collect_identifiers_from_tags_files = 1
-  nnoremap <leader>jd :YcmCompleter GoTo<CR>
+  let g:ycm_seed_identifiers_with_syntax = 1
+  nnoremap <leader>j :YcmCompleter GoTo<CR>
 endif
 
 "Mark
