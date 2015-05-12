@@ -35,6 +35,7 @@ NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'valloric/listtoggle'
 NeoBundle 'yggdroot/indentLine'
 
 if has('win32')
@@ -250,7 +251,7 @@ map <silent> <Leader><CR> :noh<CR>
 noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 "Remove indenting on empty lines
-nmap <leader>l :%s/\s*$//g<CR>:noh<CR>
+nmap <leader>i :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
