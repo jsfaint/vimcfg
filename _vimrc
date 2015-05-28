@@ -371,3 +371,6 @@ endif
 "undotree
 nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 2
+
+"Nerdtree
+nmap <leader>nt :NERDTreeToggle<CR>
