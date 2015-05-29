@@ -250,7 +250,7 @@ map <silent> <Leader><CR> :noh<CR>
 "Remove the Windows ^M
 noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
-"Remove indenting on empty lines
+"Remove trailing
 nmap <leader>i :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
@@ -341,10 +341,11 @@ endif
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_max_files = 0
-let g:ctrlp_clear_cache_on_exit = 0
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_clear_cache_on_exit = 1
+else
+  let g:ctrlp_clear_cache_on_exit = 0
 endif
 
 "YouCompleteMe
