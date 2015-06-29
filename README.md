@@ -1,17 +1,23 @@
 vimcfg
 ======
 
-This repository is my personal vim configurations, and the plugins are managed by neobundle.
+This repository is my personal Vim configurations, include configuration and plugins.
+The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
 
 Usage
 -----
-1. Clone vimcfg repos
+1. Install git on your OS
+  * For Windows user: Install [windows for git](https://msysgit.github.io/)
+  * For Linux user: Install git via your [package manager](https://en.wikipedia.org/wiki/Package_manager)
+  * For OSX user: Install git via [homebrew](http://brew.sh/)
+
+2. Clone vimcfg repos
 
   ```
   git clone https://github.com/jsfaint/vimcfg.git
   ```
 
-2. Init submodules
+2. Init submodules (NeoBundle)
 
   ```
   cd vimcfg
@@ -19,22 +25,44 @@ Usage
   ```
 
 3. Create symbolic links
+  * Linux/OSX
 
-  ```
-  ln -s vimcfg/_vimrc ~/.vimrc
-  ln -s vimcfg/vimfiles ~/.vim
-  ```
+    ```
+    ln -s vimcfg/_vimrc ~/.vimrc
+    ln -s vimcfg/vimfiles ~/.vim
+    ```
+
+  * Windows
+    You can create quick link to c:/Users/[uername]/.vim
+    But maybe it's easier to install vim into the vimcfg folder.
+
+    If you install vim into vimcfg folder the treeview will like below:
+
+    ```
+    vimcfg
+    +-- .git
+    +-- vim74
+    +-- vimfiles
+    +-- .gitignore
+    +-- .gitmodules
+    +-- _vimrc
+    +-- build_ycm.sh
+    +-- README.md
+    ```
 
 4. Install other plugins
 
-  Open Vim then neobundle will install other plugins automatically
+  Open Vim then NeoBundle will install other plugins automatically
+
+5. Update plugins
+
+  The plugins can be updated by `:NeoBundleUpdate` command.
 
 Other
 -----
-If you want more information about usage of `neobundle`  
+For more details about `neobundle`  
 Please refer [here](https://github.com/Shougo/neobundle.vim/blob/master/README.md) or `:help neobundle`
 
-If you want to custom your own plugins list, you can fork this repository.
-
+And also you can fork this repository, if you want to custom your own configuration.
 
 **Thanks for reading :)**

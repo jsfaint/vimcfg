@@ -14,6 +14,7 @@ elseif has("unix")
 endif
 
 NeoBundle 'a.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/colorizer'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -25,6 +26,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'matchit.zip'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/undotree'
+NeoBundle 'mhinz/vim-signify'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 's3rvac/autofenc'
@@ -44,8 +46,6 @@ if has('win32')
 endif
 
 if has('unix')
-  NeoBundle 'bling/vim-airline'
-  NeoBundle 'mhinz/vim-signify'
   NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
   NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
@@ -121,7 +121,7 @@ if has("gui_running")
     au GUIEnter * simalt ~x
   endif
 
-  colorscheme emax
+  colorscheme desert
 
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
@@ -364,10 +364,8 @@ let g:mwAutoSaveMarks = 1
 set viminfo+=! "Save and restore global vriables
 
 "airline
-if !has('win32')
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
-endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 "undotree
 nmap <leader>u :UndotreeToggle<CR>
