@@ -19,7 +19,7 @@ NeoBundle 'chrisbra/colorizer'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dimasg/vim-mark'
-NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'dyng/ctrlsf.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
@@ -295,28 +295,6 @@ let g:tagbar_sort=0
 let g:tagbar_left=1
 let g:tagbar_compact=1
 
-"EasyGrep
-let EasyGrepMode=0
-let EasyGrepRecursive=1
-let EasyGrepIgnoreCase=1
-let EasyGrepReplaceWindowMode=2
-let EasyGrepJumpToMatch=0
-let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
-
-if executable('ag')
-  set grepprg=ag
-  let EasyGrepCommand = 1
-elseif executable('ack')
-  set grepprg=ack
-  let EasyGrepCommand = 1
-elseif executable('grep')
-  set grepprg=grep
-  let EasyGrepCommand = 1
-else
-  set grepprg=''
-  let EasyGrepCommand = 0
-endif
-
 "neocomplete
 if has('lua') && has('win32')
   let g:neocomplete#enable_at_startup=1
@@ -373,3 +351,9 @@ let g:undotree_WindowLayout = 2
 
 "Nerdtree
 nmap <leader>nt :NERDTreeToggle<CR>
+
+"CtrlSF
+nmap <leader>V <Plug>CtrlSFPrompt
+vmap <leader>vv <Plug>CtrlSFVwordExec
+nmap <leader>vv <Plug>CtrlSFCwordExec
+nnoremap <leader>vo :CtrlSFToggle<CR>
