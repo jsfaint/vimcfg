@@ -41,6 +41,7 @@ NeoBundle 'valloric/listtoggle'
 NeoBundle 'yggdroot/indentLine'
 
 if has('win32')
+  NeoBundle 'osyo-manga/vim-marching', {'depends': 'shougo/vimproc.vim'}
   NeoBundle 'shougo/neocomplete', {'disabled': !has('lua')}
   NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'disabled': !has('lua')}
 endif
@@ -163,7 +164,6 @@ set backspace=eol,start,indent
 "Set listchars
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<
 set list
-hi Specialkey guifg=grey0
 
 "Wrap lines
 set wrap
@@ -313,6 +313,25 @@ if has('lua') && has('win32')
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
+
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.c =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+  let g:neocomplete#force_omni_input_patterns.cpp =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+  let g:neocomplete#force_omni_input_patterns.objc =
+        \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
+  let g:neocomplete#force_omni_input_patterns.objcpp =
+        \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+
+  "vim-marching
+  let g:marching_enable_neocomplete = 1
+  let g:marching_enable_auto_select = 1
+  let g:marching_include_paths = [
+        \ "C:/Program Files (x86)/LLVM/include"
+        \]
 endif
 
 "CtrlP
