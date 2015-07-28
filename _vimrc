@@ -23,6 +23,7 @@ NeoBundle 'dyng/ctrlsf.vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'matchit.zip'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/undotree'
@@ -37,7 +38,6 @@ NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'valloric/listtoggle'
 NeoBundle 'yggdroot/indentLine'
 
 if has('win32')
@@ -274,14 +274,6 @@ if has('gui_running') && (has("win32"))
   noremap / :set noimdisable<CR>/
 endif
 
-"Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -351,7 +343,7 @@ if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ycm_collect_identifiers_from_tags_files = 1
   let g:ycm_seed_identifiers_with_syntax = 1
-  nnoremap <leader>j :YcmCompleter GoTo<CR>
+  autocmd FileType * nnoremap <leader>j :YcmCompleter GoTo<CR>
 endif
 
 "Mark
@@ -376,3 +368,6 @@ nmap <leader>V <Plug>CtrlSFPrompt
 vmap <leader>vv <Plug>CtrlSFVwordExec
 nmap <leader>vv <Plug>CtrlSFCwordExec
 nnoremap <leader>vo :CtrlSFToggle<CR>
+
+"tern
+autocmd FileType javascript nnoremap <leader>j :TernDef<CR>
