@@ -343,7 +343,7 @@ if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ycm_collect_identifiers_from_tags_files = 1
   let g:ycm_seed_identifiers_with_syntax = 1
-  autocmd FileType * nnoremap <leader>j :YcmCompleter GoTo<CR>
+  autocmd FileType c,cpp,objc,objcpp,python,cs,go nnoremap <leader>j :YcmCompleter GoTo<CR>
 endif
 
 "Mark
