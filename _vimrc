@@ -37,6 +37,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
