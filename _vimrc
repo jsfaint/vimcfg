@@ -40,16 +40,15 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentLine'
 
-if has('win32')
-  NeoBundle 'osyo-manga/vim-marching', {'depends': 'shougo/vimproc.vim'}
-  NeoBundle 'shougo/neocomplete', {'disabled': !has('lua')}
-  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'disabled': !has('lua')}
-endif
-
 if has('unix')
   NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
   NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
   NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
+elseif has('win32')
+  NeoBundle 'osyo-manga/vim-marching', {'depends': 'shougo/vimproc.vim'}
+  NeoBundle 'shougo/neocomplete', {'disabled': !has('lua')}
+  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'disabled': !has('lua')}
+  NeoBundle 'davidhalter/jedi-vim'
 endif
 
 if has('mac')
