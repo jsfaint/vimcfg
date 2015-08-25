@@ -16,41 +16,37 @@ endif
 NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/colorizer'
-NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'dimasg/vim-mark'
-NeoBundle 'dyng/ctrlsf.vim'
+NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'honza/vim-snippets', {'depends': 'shougo/neosnippet.vim'}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'matchit.zip'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/fencview'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'mhinz/vim-signify'
+NeoBundle 'osyo-manga/vim-marching', {'depends': ['shougo/vimproc.vim', 'osyo-manga/vim-reunions'], 'disabled': !executable('clang')}
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'shougo/context_filetype.vim', {'depends': 'shougo/neocomplete.vim'}
+NeoBundle 'shougo/neco-syntax', {'depends': ['shougo/neco-vim'. 'shougo/neocomplete.vim']}
+NeoBundle 'shougo/neco-vim', {'depends': 'shougo/neocomplete.vim'}
+NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua')}
+NeoBundle 'shougo/neoinclude.vim', {'depends': 'shougo/neocomplete.vim'}
+NeoBundle 'shougo/neosnippet-snippets', {'depends': 'shougo/neosnippet.vim'}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
-NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'vimtaku/hl_matchit.vim', {'depends': 'matchit.zip'}
 NeoBundle 'yggdroot/indentLine'
-
-if has('unix')
-  NeoBundle 'sirver/ultisnips', {'depends': 'honza/vim-snippets', 'vim_version': '7.3.584'}
-  NeoBundle 'tdcdev/ycm_simple_conf', {'depends': 'valloric/youcompleteme', 'vim_version': '7.3.584'}
-  NeoBundle 'valloric/youcompleteme', {'vim_version': '7.3.584'}
-elseif has('win32')
-  NeoBundle 'osyo-manga/vim-marching', {'depends': 'shougo/vimproc.vim'}
-  NeoBundle 'shougo/neocomplete', {'disabled': !has('lua')}
-  NeoBundle 'shougo/neosnippet', {'depends': 'shougo/neosnippet-snippets', 'disabled': !has('lua')}
-  NeoBundle 'davidhalter/jedi-vim'
-endif
 
 if has('mac')
   NeoBundle 'rizzatti/dash.vim'
@@ -58,9 +54,11 @@ endif
 
 call neobundle#end()
 
-filetype plugin indent on
-
 NeoBundleCheck
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Basic configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Get out of VI's compatible mode..
 set nocompatible
@@ -214,9 +212,6 @@ nmap <Leader>cd :cd %:p:h<CR>
 
 set completeopt=longest,menuone
 
-"Format the status line
-set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
-
 "Turn backup off
 set nobackup
 set nowritebackup
@@ -231,7 +226,7 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-au FileType make setl noexpandtab
+autocmd FileType make setlocal noexpandtab
 
 set ambiwidth=double
 
@@ -243,6 +238,7 @@ set smartindent
 
 "Quick source for VimL
 autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
 
 "No Highlight
 map <silent> <Leader><CR> :noh<CR>
@@ -251,7 +247,7 @@ map <silent> <Leader><CR> :noh<CR>
 noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 "Remove trailing
-nmap <leader>i :%s/\s*$//g<CR>:noh<CR>
+nmap <leader>l :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
@@ -278,26 +274,58 @@ endif
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "A
-let g:alternateNoDefaultAlternate = 1
-nmap <leader>a :A<cr>
+if neobundle#is_sourced('a.vim')
+  let g:alternateNoDefaultAlternate = 1
+endif
 
 "tagbar
-map <silent> <Leader>t <esc>:TagbarToggle<CR>
-let g:tagbar_sort=0
-let g:tagbar_left=1
-let g:tagbar_compact=1
+if neobundle#is_sourced('tagbar')
+  map <silent> <Leader>t <esc>:TagbarToggle<CR>
+  let g:tagbar_sort=0
+  let g:tagbar_left=1
+  let g:tagbar_compact=1
+endif
 
-"neocomplete
-if has('lua') && has('win32')
+"EasyGrep
+let EasyGrepMode=0
+let EasyGrepRecursive=1
+let EasyGrepIgnoreCase=1
+let EasyGrepReplaceWindowMode=2
+let EasyGrepJumpToMatch=0
+let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
+
+if executable('pt')
+  set grepprg=pt
+  let EasyGrepCommand = 1
+elseif executable('ag')
+  set grepprg=ag
+  let EasyGrepCommand = 1
+elseif executable('ack')
+  set grepprg=ack
+  let EasyGrepCommand = 1
+elseif executable('grep')
+  set grepprg=grep
+  let EasyGrepCommand = 1
+else
+  set grepprg=''
+  let EasyGrepCommand = 0
+endif
+
+"neocomplete.vim
+if neobundle#is_sourced('neocomplete.vim')
   let g:neocomplete#enable_at_startup=1
   let g:neocomplete#enable_smart_case=1
   let g:neocomplete#enable_auto_select=1
+  let g:neocomplete#enable_insert_char_pre = 1
+  let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
 
   "Plugin key-mappings.
   inoremap <expr><C-g> neocomplete#undo_completion()
   inoremap <expr><C-l> neocomplete#complete_common_string()
 
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y> neocomplete#close_popup()
+  inoremap <expr><C-e> neocomplete#cancel_popup()
 
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
@@ -317,57 +345,100 @@ if has('lua') && has('win32')
         \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
   let g:neocomplete#force_omni_input_patterns.objcpp =
         \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+endif
 
-  "vim-marching
+"vim-marching
+if neobundle#is_sourced('vim-marching')
   let g:marching_enable_neocomplete = 1
   let g:marching_enable_auto_select = 1
-  let g:marching_include_paths = [
-        \ "C:/Program Files (x86)/LLVM/include"
-        \]
+  if has('win32')
+    let g:marching_include_paths = [
+          \ "C:/Program Files (x86)/LLVM/include"
+          \]
+  elseif has('mac')
+    let g:marching_include_paths = [
+          \ "/usr/include",
+          \ "/usr/local/include",
+          \ "/Library/Developer/CommandLineTools/usr/include"
+          \]
+  elseif has('unix')
+    let g:marching_include_paths = [
+          \ "/usr/include",
+          \ "/usr/local/include"
+          \]
+  endif
+endif
+
+"neosnippet
+if neobundle#is_sourced('neosnippet.vim')
+  let g:neosnippet#enable_snipmate_compatibility = 1
 endif
 
 "CtrlP
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_regexp = 1
-let g:ctrlp_max_files = 0
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_clear_cache_on_exit = 1
-else
-  let g:ctrlp_clear_cache_on_exit = 0
-endif
-
-"YouCompleteMe
-if has('unix') && (v:version > 703 || (v:version == 703 && has('patch584')))
-  let g:ycm_key_list_select_completion = ['<Enter>', '<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  let g:ycm_collect_identifiers_from_tags_files = 1
-  let g:ycm_seed_identifiers_with_syntax = 1
-  autocmd FileType c,cpp,objc,objcpp,python,cs,go nnoremap <leader>j :YcmCompleter GoTo<CR>
+if neobundle#is_sourced('ctrlp.vim')
+  let g:ctrlp_mruf_relative = 1
+  let g:ctrlp_regexp = 1
+  let g:ctrlp_max_files = 0
+  if has('unix')
+    let g:ctrlp_user_command = {
+          \ 'types': {
+          \ 1: ['.git', 'cd %s && git ls-files'],
+          \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+          \ },
+          \ 'fallback': 'find %s -type f'
+          \ }
+  else
+    let g:ctrlp_user_command = {
+          \ 'types': {
+          \ 1: ['.git', 'cd %s && git ls-files'],
+          \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+          \ },
+          \ 'fallback': 'dir %s /-n /b /s /a-d'
+          \ }
+  endif
 endif
 
 "Mark
-let g:mwDefaultHighlightingPalette = 'maximum'
-let g:mwAutoLoadMarks = 1
-let g:mwAutoSaveMarks = 1
-set viminfo+=! "Save and restore global vriables
+if neobundle#is_sourced('vim-mark')
+  let g:mwDefaultHighlightingPalette = 'maximum'
+  let g:mwAutoLoadMarks = 1
+  let g:mwAutoSaveMarks = 1
+  set viminfo+=! "Save and restore global vriables
+endif
 
 "airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+if neobundle#is_sourced('vim-airline')
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
+else
+  set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
+endif
 
 "undotree
-nmap <leader>u :UndotreeToggle<CR>
-let g:undotree_WindowLayout = 2
+if neobundle#is_sourced('undotree')
+  nmap <leader>u :UndotreeToggle<CR>
+  let g:undotree_WindowLayout = 2
+endif
 
 "Nerdtree
-nmap <leader>nt :NERDTreeToggle<CR>
-
-"CtrlSF
-nmap <leader>V <Plug>CtrlSFPrompt
-vmap <leader>vv <Plug>CtrlSFVwordExec
-nmap <leader>vv <Plug>CtrlSFCwordExec
-nnoremap <leader>vo :CtrlSFToggle<CR>
+if neobundle#is_sourced('nerdtree')
+  nmap <leader>nt :NERDTreeToggle<CR>
+endif
 
 "tern
-autocmd FileType javascript nnoremap <leader>j :TernDef<CR>
+if neobundle#is_sourced('tern_for_vim')
+  autocmd FileType javascript nnoremap <leader>j :TernDef<CR>
+endif
+
+"syntastic
+if neobundle#is_sourced('syntastic')
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 2
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+endif
+
+"hl_matchit
+if neobundle#is_sourced('hl_matchit.vim')
+  let g:hl_matchit_enable_on_vim_startup = 1
+endif

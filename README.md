@@ -58,6 +58,14 @@ Usage
 
   The plugins can be updated by `:NeoBundleUpdate` command.
 
+6. Post install
+
+  Some plugins require external command.
+  * `fencview` require vim has `iconv` feature and an external lib `iconv.dll` for windows.
+  * `neocomplete` require vim has `if_lua` feature.
+  * `syntastic` need to install external checker for different language.
+  * `vimproc` need to build c code to dll on windows
+
 Other
 -----
 For more details about `neobundle`  
