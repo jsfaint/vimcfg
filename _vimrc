@@ -20,18 +20,19 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'gregsexton/gitv', {'depends': 'tpope/vim-fugitive'}
 NeoBundle 'honza/vim-snippets', {'depends': 'shougo/neosnippet.vim'}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/fencview'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'mhinz/vim-signify'
 NeoBundle 'osyo-manga/vim-marching', {'depends': ['shougo/vimproc.vim', 'osyo-manga/vim-reunions'], 'disabled': !executable('clang')}
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'raimondi/delimitMate'
+NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -46,7 +47,7 @@ NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'vimtaku/hl_matchit.vim', {'depends': 'matchit.zip'}
-NeoBundle 'yggdroot/indentLine'
+NeoBundle 'yggdroot/indentline'
 
 if has('mac')
   NeoBundle 'rizzatti/dash.vim'
@@ -345,6 +346,11 @@ if neobundle#is_sourced('neocomplete.vim')
         \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
   let g:neocomplete#force_omni_input_patterns.objcpp =
         \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
+
+  if neobundle#is_sourced('vim-go')
+    let g:neocomplete#force_omni_input_patterns.go =
+          \ '[^.[:digit:] *\t]\.\w*'
+  endif
 endif
 
 "vim-marching
@@ -423,11 +429,6 @@ endif
 "Nerdtree
 if neobundle#is_sourced('nerdtree')
   nmap <leader>nt :NERDTreeToggle<CR>
-endif
-
-"tern
-if neobundle#is_sourced('tern_for_vim')
-  autocmd FileType javascript nnoremap <leader>j :TernDef<CR>
 endif
 
 "syntastic

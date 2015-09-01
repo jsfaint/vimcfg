@@ -7,9 +7,9 @@ The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
 Usage
 -----
 1. Install git on your OS
-  * For Windows user: Install [windows for git](https://msysgit.github.io/)
+  * For Windows user: Install [windows for git](https://git-for-windows.github.io)
   * For Linux user: Install git via your [package manager](https://en.wikipedia.org/wiki/Package_manager)
-  * For OSX user: Install git via [homebrew](http://brew.sh/)
+  * For OS X user: Install git via [homebrew](http://brew.sh/)
 
 2. Clone vimcfg repos
 
@@ -17,7 +17,7 @@ Usage
   git clone https://github.com/jsfaint/vimcfg.git
   ```
 
-2. Init submodules (NeoBundle)
+2. Initial submodules (NeoBundle)
 
   ```
   cd vimcfg
@@ -25,7 +25,7 @@ Usage
   ```
 
 3. Create symbolic links
-  * Linux/OSX
+  * Linux/OS X
 
     ```
     ln -s vimcfg/_vimrc ~/.vimrc
@@ -63,8 +63,10 @@ Usage
   Some plugins require external command.
   * `fencview` require vim has `iconv` feature and an external lib `iconv.dll` for windows.
   * `neocomplete` require vim has `if_lua` feature.
+  * `vim-marching` require Clang for C-family completion.
   * `syntastic` need to install external checker for different language.
-  * `vimproc` need to build c code to dll on windows
+  * `vimproc` need to build C code to dll on windows, which will auto build for Linux and OS X.
+  * `vim-go` need to install binary tool via `:GoInstallBinaries`
 
 Other
 -----
