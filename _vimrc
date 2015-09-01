@@ -444,3 +444,22 @@ endif
 if neobundle#is_sourced('hl_matchit.vim')
   let g:hl_matchit_enable_on_vim_startup = 1
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Extra Setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"NOTE: extra.vim is for some special setting
+"  which is volatile, platform related, but non-standard setting
+function! Load_extra()
+  "Extra setting out of vimrc
+  if has("win32")
+    let l:extra_conf = expand("$VIM/extra.vim")
+  elseif has("unix")
+    let l:extra_conf = expand("$HOME/.vim/extra.vim")
+  endif
+
+  if filereadable(l:extra_conf)
+    execute 'source ' . fnameescape(l:extra_conf)
+  endif
+endfunction
+call Load_extra()
