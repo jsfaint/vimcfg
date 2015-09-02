@@ -17,37 +17,40 @@ NeoBundle 'a.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/colorizer'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'gregsexton/gitv', {'depends': 'tpope/vim-fugitive'}
-NeoBundle 'honza/vim-snippets', {'depends': 'shougo/neosnippet.vim'}
+NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'matchit.zip', {'depends': 'vimtaku/hl_matchit.vim'}
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mbbill/fencview'
+NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'osyo-manga/vim-marching', {'depends': ['shougo/vimproc.vim', 'osyo-manga/vim-reunions'], 'disabled': !executable('clang')}
+NeoBundle 'mhinz/vim-signify', {'disabld': !executable('git')}
+NeoBundle 'osyo-manga/vim-marching', {'depends': 'osyo-manga/vim-reunions', 'disabled': !executable('clang')}
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/context_filetype.vim', {'depends': 'shougo/neocomplete.vim'}
-NeoBundle 'shougo/neco-syntax', {'depends': ['shougo/neco-vim'. 'shougo/neocomplete.vim']}
-NeoBundle 'shougo/neco-vim', {'depends': 'shougo/neocomplete.vim'}
-NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua')}
-NeoBundle 'shougo/neoinclude.vim', {'depends': 'shougo/neocomplete.vim'}
-NeoBundle 'shougo/neosnippet-snippets', {'depends': 'shougo/neosnippet.vim'}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
-NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive', {'depends': 'gregsexton/gitv', 'disabled': !executable('git')}
 NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'vimtaku/hl_matchit.vim', {'depends': 'matchit.zip'}
 NeoBundle 'yggdroot/indentline'
+
+NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua'),
+      \'depends':[
+      \'shougo/context_filetype.vim',
+      \'shougo/neco-vim',
+      \'shougo/neco-syntax',
+      \'shougo/echodoc.vim',
+      \'shougo/neoinclude.vim',
+      \'shougo/neosnippet.vim',
+      \'shougo/neosnippet-snippets',
+      \'honza/vim-snippets']}
 
 if has('mac')
   NeoBundle 'rizzatti/dash.vim'
@@ -73,14 +76,14 @@ filetype plugin indent on
 "Set to auto read when a file is changed from the outside
 set autoread
 
-"Have the mouse enabled all the time:
+"Enable use of the mouse
 set mouse=a
 
 " Hide the mouse when typing text
 set mousehide
 
 "Set mapleader
-let g:mapleader=","
+let g:mapleader = ","
 
 "Fast saving
 nmap \w :update<CR>
@@ -97,7 +100,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-let $LANG='en_US.UTF-8'
+let $LANG = 'en_US.UTF-8'
 set langmenu=en_US
 if has('win32')
   source $VIMRUNTIME/delmenu.vim
@@ -253,7 +256,7 @@ nmap <leader>l :%s/\s*$//g<CR>:noh<CR>
 "persistent undo
 function! Make_undodir()
   if version >= 703 && has('persistent_undo')
-    let l:dir=expand("$HOME/.cache/undodir")
+    let l:dir = expand("$HOME/.cache/undodir")
     set undofile
     exec 'set undodir=' . l:dir
 
@@ -282,18 +285,18 @@ endif
 "tagbar
 if neobundle#is_sourced('tagbar')
   map <silent> <Leader>t <esc>:TagbarToggle<CR>
-  let g:tagbar_sort=0
-  let g:tagbar_left=1
-  let g:tagbar_compact=1
+  let g:tagbar_sort = 0
+  let g:tagbar_left = 1
+  let g:tagbar_compact = 1
 endif
 
 "EasyGrep
-let EasyGrepMode=0
-let EasyGrepRecursive=1
-let EasyGrepIgnoreCase=1
-let EasyGrepReplaceWindowMode=2
-let EasyGrepJumpToMatch=0
-let g:EasyGrepFilesToExclude="GPATH,GRTAGS,GTAGS"
+let EasyGrepMode = 0
+let EasyGrepRecursive = 1
+let EasyGrepIgnoreCase = 1
+let EasyGrepReplaceWindowMode = 2
+let EasyGrepJumpToMatch = 0
+let g:EasyGrepFilesToExclude = "GPATH,GRTAGS,GTAGS"
 
 if executable('pt')
   set grepprg=pt
@@ -314,9 +317,10 @@ endif
 
 "neocomplete.vim
 if neobundle#is_sourced('neocomplete.vim')
-  let g:neocomplete#enable_at_startup=1
-  let g:neocomplete#enable_smart_case=1
-  let g:neocomplete#enable_auto_select=1
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_camel_case = 1
+  let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_insert_char_pre = 1
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
 
@@ -342,10 +346,6 @@ if neobundle#is_sourced('neocomplete.vim')
         \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
   let g:neocomplete#force_omni_input_patterns.cpp =
         \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-  let g:neocomplete#force_omni_input_patterns.objc =
-        \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
-  let g:neocomplete#force_omni_input_patterns.objcpp =
-        \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
 
   if neobundle#is_sourced('vim-go')
     let g:neocomplete#force_omni_input_patterns.go =
@@ -378,6 +378,11 @@ endif
 "neosnippet
 if neobundle#is_sourced('neosnippet.vim')
   let g:neosnippet#enable_snipmate_compatibility = 1
+endif
+
+"echodoc.vim
+if neobundle#is_sourced('echodoc.vim')
+  let g:echodoc_enable_at_startup = 1
 endif
 
 "CtrlP
@@ -438,6 +443,13 @@ if neobundle#is_sourced('syntastic')
   let g:syntastic_auto_loc_list = 2
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
+
+  if has('gui_running')
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_warning_symbol = '⚠'
+    let g:syntastic_style_error_symbol = '✠'
+    let g:syntastic_style_warning_symbol = '≈'
+  endif
 endif
 
 "hl_matchit
