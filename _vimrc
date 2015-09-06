@@ -24,7 +24,7 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'matchit.zip', {'depends': 'vimtaku/hl_matchit.vim'}
+NeoBundle 'matchit.zip'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
@@ -450,11 +450,6 @@ if neobundle#is_sourced('syntastic')
     let g:syntastic_style_error_symbol = '✠'
     let g:syntastic_style_warning_symbol = '≈'
   endif
-endif
-
-"hl_matchit
-if neobundle#is_sourced('hl_matchit.vim')
-  let g:hl_matchit_enable_on_vim_startup = 1
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
