@@ -390,22 +390,12 @@ if neobundle#is_sourced('ctrlp.vim')
   let g:ctrlp_mruf_relative = 1
   let g:ctrlp_regexp = 1
   let g:ctrlp_max_files = 0
-  if has('unix')
-    let g:ctrlp_user_command = {
-          \ 'types': {
-          \ 1: ['.git', 'cd %s && git ls-files'],
-          \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-          \ },
-          \ 'fallback': 'find %s -type f'
-          \ }
+
+  if executable('pt')
+    let g:ctrlp_user_command = 'pt -g . %s'
+    let g:ctrlp_clear_cache_on_exit = 1
   else
-    let g:ctrlp_user_command = {
-          \ 'types': {
-          \ 1: ['.git', 'cd %s && git ls-files'],
-          \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-          \ },
-          \ 'fallback': 'dir %s /-n /b /s /a-d'
-          \ }
+    let g:ctrlp_clear_cache_on_exit = 0
   endif
 endif
 
