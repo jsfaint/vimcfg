@@ -35,7 +35,7 @@ NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make -f make_unix.mak', 'mac': 'make -f make_mac.mak'}}
+NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'tpope/vim-fugitive', {'depends': 'gregsexton/gitv', 'disabled': !executable('git')}
 NeoBundle 'tpope/vim-speeddating'
@@ -214,7 +214,7 @@ set laststatus=2
 "Switch to current dir
 nmap <Leader>cd :cd %:p:h<CR>
 
-set completeopt=longest,menuone
+set completeopt+=menuone
 
 "Turn backup off
 set nobackup
@@ -315,15 +315,33 @@ else
   let EasyGrepCommand = 0
 endif
 
+"vim-marching
+if neobundle#is_sourced('vim-marching')
+  let g:marching_enable_neocomplete = 1
+  if has('win32')
+    let g:marching_include_paths = [
+          \ "C:/Program Files (x86)/LLVM/include"
+          \]
+  elseif has('unix')
+    let g:marching_include_paths = [
+          \ "/usr/include",
+          \ "/usr/local/include"
+          \]
+  endif
+endif
+
+"neosnippet
+if neobundle#is_sourced('neosnippet.vim')
+  let g:neosnippet#enable_snipmate_compatibility = 1
+endif
+
+"echodoc.vim
+if neobundle#is_sourced('echodoc.vim')
+  let g:echodoc_enable_at_startup = 1
+endif
+
 "neocomplete.vim
 if neobundle#is_sourced('neocomplete.vim')
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_camel_case = 1
-  let g:neocomplete#enable_auto_select = 1
-  let g:neocomplete#enable_insert_char_pre = 1
-  let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
-
   "Plugin key-mappings.
   inoremap <expr><C-g> neocomplete#undo_completion()
   inoremap <expr><C-l> neocomplete#complete_common_string()
@@ -351,38 +369,11 @@ if neobundle#is_sourced('neocomplete.vim')
     let g:neocomplete#force_omni_input_patterns.go =
           \ '[^.[:digit:] *\t]\.\w*'
   endif
-endif
 
-"vim-marching
-if neobundle#is_sourced('vim-marching')
-  let g:marching_enable_neocomplete = 1
-  let g:marching_enable_auto_select = 1
-  if has('win32')
-    let g:marching_include_paths = [
-          \ "C:/Program Files (x86)/LLVM/include"
-          \]
-  elseif has('mac')
-    let g:marching_include_paths = [
-          \ "/usr/include",
-          \ "/usr/local/include",
-          \ "/Library/Developer/CommandLineTools/usr/include"
-          \]
-  elseif has('unix')
-    let g:marching_include_paths = [
-          \ "/usr/include",
-          \ "/usr/local/include"
-          \]
-  endif
-endif
-
-"neosnippet
-if neobundle#is_sourced('neosnippet.vim')
-  let g:neosnippet#enable_snipmate_compatibility = 1
-endif
-
-"echodoc.vim
-if neobundle#is_sourced('echodoc.vim')
-  let g:echodoc_enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_insert_char_pre = 1
+  let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+  let g:neocomplete#enable_at_startup = 1
 endif
 
 "CtrlP
@@ -411,8 +402,10 @@ endif
 if neobundle#is_sourced('vim-airline')
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
+  set noshowmode
 else
   set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
+  set showmode
 endif
 
 "undotree
