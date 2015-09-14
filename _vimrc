@@ -67,9 +67,6 @@ NeoBundleCheck
 "Get out of VI's compatible mode..
 set nocompatible
 
-"Sets how many lines of history VIM have to remember
-set history=50
-
 "Enable filetype plugin
 filetype plugin indent on
 
@@ -102,7 +99,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 let $LANG = 'en_US.UTF-8'
 set langmenu=en_US
-if has('win32')
+if has('win32') || has('win64')
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
 endif
@@ -148,10 +145,13 @@ set so=7
 
 "Turn on WiLd menu
 set wildmenu
+
+"Ignore these patterns
 set wildignore=*.bak,*.o,*.e,*~
 
 "Number of screen lines to use for the command-line
 set cmdheight=2
+
 set showcmd
 
 "Show line number
@@ -194,14 +194,6 @@ set magic
 set noerrorbells
 set visualbell
 
-"show matching brackets
-set showmatch
-"Tenths of a second to show the matching pattern.
-set matchtime=10
-
-"Show mode, insert/replaced/visual/etc
-set showmode
-
 "Filetypes
 set ffs=unix,dos
 
@@ -215,6 +207,7 @@ set laststatus=2
 nmap <Leader>cd :cd %:p:h<CR>
 
 set completeopt+=menuone
+set completeopt-=preview
 
 "Turn backup off
 set nobackup
@@ -230,6 +223,8 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+"Disable expandtab for makefile
 autocmd FileType make setlocal noexpandtab
 
 set ambiwidth=double
@@ -318,6 +313,7 @@ endif
 "vim-marching
 if neobundle#is_sourced('vim-marching')
   let g:marching_enable_neocomplete = 1
+  let g:marching_enable_auto_select = 1
   if has('win32')
     let g:marching_include_paths = [
           \ "C:/Program Files (x86)/LLVM/include"
@@ -357,20 +353,16 @@ if neobundle#is_sourced('neocomplete.vim')
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
 
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
-  let g:neocomplete#force_omni_input_patterns.c =
-        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-  let g:neocomplete#force_omni_input_patterns.cpp =
-        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-
-  if neobundle#is_sourced('vim-go')
-    let g:neocomplete#force_omni_input_patterns.go =
-          \ '[^.[:digit:] *\t]\.\w*'
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns.c =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+    let g:neocomplete#sources#omni#input_patterns.cpp =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
   endif
 
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
+  let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
 endif
 
