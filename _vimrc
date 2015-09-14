@@ -370,8 +370,6 @@ if neobundle#is_sourced('neocomplete.vim')
           \ '[^.[:digit:] *\t]\.\w*'
   endif
 
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_insert_char_pre = 1
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
   let g:neocomplete#enable_at_startup = 1
 endif
