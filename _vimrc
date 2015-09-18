@@ -338,13 +338,7 @@ endif
 
 "neocomplete.vim
 if neobundle#is_sourced('neocomplete.vim')
-  "Plugin key-mappings.
-  inoremap <expr><C-g> neocomplete#undo_completion()
-  inoremap <expr><C-l> neocomplete#complete_common_string()
-
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y> neocomplete#close_popup()
-  inoremap <expr><C-e> neocomplete#cancel_popup()
 
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
