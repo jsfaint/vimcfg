@@ -2,9 +2,6 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-"neobundle, it should be in the front of vimrc to avoid some weird errors.
-filetype off
-
 if has("win32")
   set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
   call neobundle#begin('$VIM/vimfiles/bundle')
@@ -314,11 +311,7 @@ endif
 if neobundle#is_sourced('vim-marching')
   let g:marching_enable_neocomplete = 1
   let g:marching_enable_auto_select = 1
-  if has('win32')
-    let g:marching_include_paths = [
-          \ "C:/Program Files (x86)/LLVM/include"
-          \]
-  elseif has('unix')
+  if has('unix')
     let g:marching_include_paths = [
           \ "/usr/include",
           \ "/usr/local/include"
