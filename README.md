@@ -67,6 +67,7 @@ Usage
   * `vimproc` need to build C code to dll on windows, which will auto build for Linux and OS X.
   * `vim-go` need to install binary tool via `:GoInstallBinaries`
   * `gen_tags.vim` require [ctags](http://ctags.sourceforge.net/) and [GNU global](http://www.gnu.org/software/global/)
+  * `tern_for_vim` require install tern (node.js base)
 
 Other
 -----

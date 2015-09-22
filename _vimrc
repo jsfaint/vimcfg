@@ -21,6 +21,7 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'marijnh/tern_for_vim', {'disabled': !has('python')}
 NeoBundle 'matchit.zip'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
@@ -204,7 +205,6 @@ set laststatus=2
 nmap <Leader>cd :cd %:p:h<CR>
 
 set completeopt+=menuone
-set completeopt-=preview
 
 "Turn backup off
 set nobackup
@@ -221,9 +221,6 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-"Disable expandtab for makefile
-autocmd FileType make setlocal noexpandtab
-
 set ambiwidth=double
 
 "Auto indent
@@ -231,10 +228,6 @@ set autoindent
 
 "Smart indent
 set smartindent
-
-"Quick source for VimL
-autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
-autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
 
 "No Highlight
 map <silent> <Leader><CR> :noh<CR>
@@ -265,6 +258,14 @@ if has('gui_running') && (has("win32"))
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
 endif
+
+"Disable expandtab for makefile
+autocmd FileType make setlocal noexpandtab
+
+"Setting for VimL
+autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType vim nnoremap <buffer> <silent> K :execute("help " . expand("<cword>"))<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
@@ -410,6 +411,14 @@ if neobundle#is_sourced('syntastic')
     let g:syntastic_style_error_symbol = '✠'
     let g:syntastic_style_warning_symbol = '≈'
   endif
+endif
+
+"tern.js
+if neobundle#is_sourced('tern_for_vim')
+    autocmd FileType javascript nnoremap <buffer> <silent> gd :TernDef<CR>
+    autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
+    let g:tern_show_argument_hints = 'on_move'
+    let g:tern_show_signature_in_pum = 1
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
