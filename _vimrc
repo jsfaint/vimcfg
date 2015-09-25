@@ -10,35 +10,49 @@ elseif has("unix")
   call neobundle#begin('$HOME/.vim/bundle')
 endif
 
-NeoBundle 'a.vim'
+"Enhanced
 NeoBundle 'bling/vim-airline'
-NeoBundle 'chrisbra/colorizer'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
 NeoBundle 'dimasg/vim-mark'
-NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
-NeoBundle 'jsfaint/gen_tags.vim'
-NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'marijnh/tern_for_vim', {'disabled': !has('python')}
-NeoBundle 'matchit.zip'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
-NeoBundle 'mhinz/vim-signify', {'disabld': !executable('git')}
-NeoBundle 'osyo-manga/vim-marching', {'depends': 'osyo-manga/vim-reunions', 'disabled': !executable('clang')}
 NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
+NeoBundle 'tpope/vim-speeddating'
+
+"Search, Explore
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'dkprice/vim-easygrep'
+NeoBundle 'scrooloose/nerdtree'
+
+"C Family
+NeoBundle 'a.vim'
+NeoBundle 'lendyzhang/vim-emax'
+NeoBundle 'osyo-manga/vim-marching', {'depends': 'osyo-manga/vim-reunions', 'disabled': !executable('clang')}
+
+"Python
+NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
+
+"Go
+NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
+
+"Web development
+NeoBundle 'chrisbra/colorizer'
+NeoBundle 'marijnh/tern_for_vim', {'disabled': !has('python')}
+NeoBundle 'mattn/emmet-vim'
+
+"Git related
+NeoBundle 'mhinz/vim-signify', {'disabld': !executable('git')}
+NeoBundle 'tpope/vim-fugitive', {'depends': 'gregsexton/gitv', 'disabled': !executable('git')}
+
+"Coding
+NeoBundle 'jsfaint/gen_tags.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'matchit.zip'
 NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
-NeoBundle 'tpope/vim-fugitive', {'depends': 'gregsexton/gitv', 'disabled': !executable('git')}
-NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'yggdroot/indentline'
-
 NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua'),
       \'depends':[
       \'shougo/context_filetype.vim',
@@ -333,7 +347,7 @@ endif
 "neocomplete.vim
 if neobundle#is_sourced('neocomplete.vim')
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
+  inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)"
         \: "\<TAB>"
@@ -344,9 +358,9 @@ if neobundle#is_sourced('neocomplete.vim')
   if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
     let g:neocomplete#sources#omni#input_patterns.c =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+          \ '[^.[:digit:] *\t]\%(\.\|->\)'
     let g:neocomplete#sources#omni#input_patterns.cpp =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+          \'[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
   endif
 
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
