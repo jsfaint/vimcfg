@@ -28,22 +28,23 @@ NeoBundle 'scrooloose/nerdtree'
 "C Family
 NeoBundle 'a.vim'
 NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'osyo-manga/vim-marching', {'depends': 'osyo-manga/vim-reunions', 'disabled': !executable('clang')}
+NeoBundle 'osyo-manga/vim-marching', {'disabled': !executable('clang')}
+NeoBundle 'osyo-manga/vim-reunions', {'disabled': !executable('clang')}
 
 "Python
-NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
+NeoBundle 'davidhalter/jedi-vim', {'disabled': !executable('python')}
 
 "Go
 NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 
 "Web development
 NeoBundle 'chrisbra/colorizer'
-NeoBundle 'marijnh/tern_for_vim', {'disabled': !has('python')}
+NeoBundle 'marijnh/tern_for_vim', {'disabled': !executable('python')}
 NeoBundle 'mattn/emmet-vim'
 
 "Git related
 NeoBundle 'mhinz/vim-signify', {'disabld': !executable('git')}
-NeoBundle 'tpope/vim-fugitive', {'depends': 'gregsexton/gitv', 'disabled': !executable('git')}
+NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
 
 "Coding
 NeoBundle 'jsfaint/gen_tags.vim'
@@ -54,16 +55,19 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
 NeoBundle 'yggdroot/indentline'
-NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua'),
-      \'depends':[
-      \'shougo/context_filetype.vim',
-      \'shougo/neco-vim',
-      \'shougo/neco-syntax',
-      \'shougo/echodoc.vim',
-      \'shougo/neoinclude.vim',
-      \'shougo/neosnippet.vim',
-      \'shougo/neosnippet-snippets',
-      \'honza/vim-snippets']}
+if has('lua')
+  NeoBundle 'honza/vim-snippets'
+  NeoBundle 'shougo/context_filetype.vim'
+  NeoBundle 'shougo/echodoc.vim'
+  NeoBundle 'shougo/neco-syntax'
+  NeoBundle 'shougo/neco-vim'
+  NeoBundle 'shougo/neocomplete.vim'
+  NeoBundle 'shougo/neoinclude.vim'
+  NeoBundle 'shougo/neosnippet-snippets'
+  NeoBundle 'shougo/neosnippet.vim'
+else
+  NeoBundle 'ajh17/VimCompletesMe'
+endif
 
 if has('mac')
   NeoBundle 'rizzatti/dash.vim'
@@ -325,7 +329,9 @@ endif
 
 "vim-marching
 if neobundle#is_sourced('vim-marching')
-  let g:marching_enable_neocomplete = 1
+  if neobundle#is_sourced('neocomplete.vim')
+    let g:marching_enable_neocomplete = 1
+  endif
   let g:marching_enable_auto_select = 1
   if has('unix')
     let g:marching_include_paths = [
