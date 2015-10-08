@@ -1,9 +1,11 @@
+.DS_Store
+GPATH
+GRTAGS
+GTAGS
+extra.vim
+global
+tags
+update_vimruntime.sh
 vim74
 vimfiles/.netrwhist
 vimfiles/bundle
-tags
-GTAGS
-GRTAGS
-GPATH
-.DS_Store
-extra.vim
