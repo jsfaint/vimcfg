@@ -12,6 +12,7 @@ endif
 
 "Enhanced
 NeoBundle 'bling/vim-airline'
+NeoBundle 'derekmcloughlin/gvimfullscreen_win32', {'disabled': !has('win32')}
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
@@ -433,6 +434,12 @@ if neobundle#is_sourced('tern_for_vim')
     autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
     let g:tern_show_argument_hints = 'on_move'
     let g:tern_show_signature_in_pum = 1
+endif
+
+"gvimfullscreen_win32
+if neobundle#is_sourced('gvimfullscreen_win32')
+  let $GVIMFS=substitute(expand("$VIM/vimfiles/bundle/gvimfullscreen_win32/gvimfullscreen.dll"), '\\', '\\\\', 'g')
+  map <F11> <Esc>:call libcallnr($GVIMFS, "ToggleFullScreen", 0)<CR>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
