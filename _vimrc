@@ -39,7 +39,7 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 
 "Web development
 NeoBundle 'chrisbra/colorizer'
-NeoBundle 'marijnh/tern_for_vim', {'disabled': !executable('python')}
+NeoBundle 'ternjs/tern_for_vim', {'disabled': !executable('python')}
 NeoBundle 'mattn/emmet-vim'
 
 "Git related
