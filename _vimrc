@@ -43,7 +43,7 @@ NeoBundle 'ternjs/tern_for_vim', {'disabled': !executable('python')}
 NeoBundle 'mattn/emmet-vim'
 
 "Git related
-NeoBundle 'mhinz/vim-signify', {'disabld': !executable('git')}
+NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
 NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
 
 "Coding
@@ -157,10 +157,10 @@ set nocursorline
 "Set numbers of terminal colors
 set t_Co=256
 
-"Set 7 lines to the curors - when moving vertical..
+"Set 7 lines to the cursor - when moving vertical..
 set so=7
 
-"Turn on WiLd menu
+"Turn on wild menu
 set wildmenu
 
 "Ignore these patterns
@@ -211,7 +211,6 @@ set magic
 set noerrorbells
 set visualbell
 
-"Filetypes
 set ffs=unix,dos
 
 nmap <Leader>fd :se ff=dos<CR>
@@ -220,7 +219,7 @@ nmap <Leader>fu :se ff=unix<CR>
 "Always show the statusline
 set laststatus=2
 
-"Switch to current dir
+"Switch to current directory
 nmap <Leader>cd :cd %:p:h<CR>
 
 set completeopt+=menuone
@@ -272,7 +271,7 @@ endfunction
 call Make_undodir()
 
 "Enable/Disable IME
-if has('gui_running') && (has("win32"))
+if has('gui_running') && has("win32")
   autocmd! InsertLeave * set imdisable
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
@@ -294,7 +293,7 @@ if neobundle#is_sourced('a.vim')
   let g:alternateNoDefaultAlternate = 1
 endif
 
-"tagbar
+"Tagbar
 if neobundle#is_sourced('tagbar')
   map <silent> <Leader>t <esc>:TagbarToggle<CR>
   let g:tagbar_sort = 0
@@ -396,7 +395,7 @@ if neobundle#is_sourced('vim-mark')
   let g:mwDefaultHighlightingPalette = 'maximum'
   let g:mwAutoLoadMarks = 1
   let g:mwAutoSaveMarks = 1
-  set viminfo+=! "Save and restore global vriables
+  set viminfo+=! "Save and restore global variables
 endif
 
 "airline
