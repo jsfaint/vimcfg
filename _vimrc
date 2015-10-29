@@ -303,28 +303,30 @@ if neobundle#is_sourced('tagbar')
 endif
 
 "EasyGrep
-let EasyGrepMode = 0
-let EasyGrepRecursive = 1
-let EasyGrepIgnoreCase = 1
-let EasyGrepReplaceWindowMode = 2
-let EasyGrepJumpToMatch = 0
-let g:EasyGrepFilesToExclude = "GPATH,GRTAGS,GTAGS"
+if neobundle#is_sourced('vim-easygrep')
+  let EasyGrepMode = 0
+  let EasyGrepRecursive = 1
+  let EasyGrepIgnoreCase = 1
+  let EasyGrepReplaceWindowMode = 2
+  let EasyGrepJumpToMatch = 0
+  let g:EasyGrepFilesToExclude = "GPATH,GRTAGS,GTAGS"
 
-if executable('pt')
-  set grepprg=pt
-  let EasyGrepCommand = 1
-elseif executable('ag')
-  set grepprg=ag
-  let EasyGrepCommand = 1
-elseif executable('ack')
-  set grepprg=ack
-  let EasyGrepCommand = 1
-elseif executable('grep')
-  set grepprg=grep
-  let EasyGrepCommand = 1
-else
-  set grepprg=''
-  let EasyGrepCommand = 0
+  if executable('pt')
+    set grepprg=pt
+    let EasyGrepCommand = 1
+  elseif executable('ag')
+    set grepprg=ag
+    let EasyGrepCommand = 1
+  elseif executable('ack')
+    set grepprg=ack
+    let EasyGrepCommand = 1
+  elseif executable('grep')
+    set grepprg=grep
+    let EasyGrepCommand = 1
+  else
+    set grepprg=''
+    let EasyGrepCommand = 0
+  endif
 endif
 
 "vim-marching
