@@ -12,8 +12,8 @@ endif
 
 "Enhanced
 NeoBundle 'bling/vim-airline'
-NeoBundle 'derekmcloughlin/gvimfullscreen_win32', {'disabled': !has('win32')}
 NeoBundle 'dimasg/vim-mark'
+NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
 NeoBundle 'osyo-manga/vim-over'
@@ -443,10 +443,9 @@ if neobundle#is_sourced('tern_for_vim')
     let g:tern_show_signature_in_pum = 1
 endif
 
-"gvimfullscreen_win32
-if neobundle#is_sourced('gvimfullscreen_win32')
-  let $GVIMFS=substitute(expand("$VIM/vimfiles/bundle/gvimfullscreen_win32/gvimfullscreen.dll"), '\\', '\\\\', 'g')
-  map <F11> <Esc>:call libcallnr($GVIMFS, "ToggleFullScreen", 0)<CR>
+if neobundle#is_sourced('wimproved.vim')
+  autocmd GUIEnter * silent! WToggleClean
+  map <F11> :WToggleFullscreen<CR>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
