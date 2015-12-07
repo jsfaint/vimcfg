@@ -18,6 +18,7 @@ NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
+NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-speeddating'
 
 "Search, Explore
@@ -138,7 +139,9 @@ if has("gui_running")
     au GUIEnter * simalt ~x
   endif
 
-  colorscheme desert
+  if neobundle#is_sourced('molokai')
+    colorscheme molokai
+  endif
 
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
@@ -147,15 +150,15 @@ if has("gui_running")
   set guioptions-=m "Menu bar
   set guioptions+=c "console dialogs
 else
-  colorscheme desert
+  if neobundle#is_sourced('molokai')
+    colorscheme molokai
+    let g:rehash256 = 1
+  endif
 endif
 
 autocmd BufEnter * :syntax sync fromstart
 
 set nocursorline
-
-"Set numbers of terminal colors
-set t_Co=256
 
 "Set 7 lines to the cursor - when moving vertical..
 set so=7
