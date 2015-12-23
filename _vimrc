@@ -40,8 +40,8 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 
 "Web development
 NeoBundle 'chrisbra/colorizer'
-NeoBundle 'ternjs/tern_for_vim', {'disabled': !executable('python')}
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'ternjs/tern_for_vim', {'disabled': !executable('python')}
 
 "Git related
 NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
@@ -288,6 +288,8 @@ autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType vim nnoremap <buffer> <silent> K :execute("help " . expand("<cword>"))<CR>
 
+autocmd FileType html,javascript setlocal expandtab shiftwidth=2 softtabstop=2
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,12 +318,6 @@ if neobundle#is_sourced('vim-easygrep')
   if executable('pt')
     set grepprg=pt
     let EasyGrepCommand = 1
-  elseif executable('ag')
-    set grepprg=ag
-    let EasyGrepCommand = 1
-  elseif executable('ack')
-    set grepprg=ack
-    let EasyGrepCommand = 1
   elseif executable('grep')
     set grepprg=grep
     let EasyGrepCommand = 1
@@ -343,16 +339,6 @@ if neobundle#is_sourced('vim-marching')
           \ "/usr/local/include"
           \]
   endif
-endif
-
-"neosnippet
-if neobundle#is_sourced('neosnippet.vim')
-  let g:neosnippet#enable_snipmate_compatibility = 1
-endif
-
-"echodoc.vim
-if neobundle#is_sourced('echodoc.vim')
-  let g:echodoc_enable_at_startup = 1
 endif
 
 "neocomplete.vim
@@ -377,6 +363,16 @@ if neobundle#is_sourced('neocomplete.vim')
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
+
+  "neosnippet
+  if neobundle#is_sourced('neosnippet.vim')
+    let g:neosnippet#enable_snipmate_compatibility = 1
+  endif
+
+  "echodoc.vim
+  if neobundle#is_sourced('echodoc.vim')
+    let g:echodoc_enable_at_startup = 1
+  endif
 endif
 
 "CtrlP
@@ -440,12 +436,13 @@ endif
 
 "tern.js
 if neobundle#is_sourced('tern_for_vim')
-    autocmd FileType javascript nnoremap <buffer> <silent> gd :TernDef<CR>
-    autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
-    let g:tern_show_argument_hints = 'on_move'
-    let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript nnoremap <buffer> <silent> gd :TernDef<CR>
+  autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
+  let g:tern_show_argument_hints = 'on_move'
+  let g:tern_show_signature_in_pum = 1
 endif
 
+"Wimproved
 if neobundle#is_sourced('wimproved.vim')
   autocmd GUIEnter * silent! WToggleClean
   map <F11> :WToggleFullscreen<CR>
