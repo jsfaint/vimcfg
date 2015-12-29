@@ -18,6 +18,7 @@ NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
+NeoBundle 'shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-speeddating'
 
