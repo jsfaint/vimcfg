@@ -334,12 +334,6 @@ if neobundle#is_sourced('vim-marching')
     let g:marching_enable_neocomplete = 1
   endif
   let g:marching_enable_auto_select = 1
-  if has('unix')
-    let g:marching_include_paths = [
-          \ "/usr/include",
-          \ "/usr/local/include"
-          \]
-  endif
 endif
 
 "neocomplete.vim
