@@ -118,7 +118,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 let $LANG = 'en_US.UTF-8'
 set langmenu=en_US
-if has('win32') || has('win64')
+if has('win32')
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
 endif
@@ -380,7 +380,16 @@ if neobundle#is_sourced('ctrlp.vim')
     let g:ctrlp_user_command = 'pt -g . %s'
     let g:ctrlp_clear_cache_on_exit = 1
   else
-    let g:ctrlp_clear_cache_on_exit = 0
+    if has('unix')
+      let g:ctrlp_user_command = 'find %s -type f'
+      let g:ctrlp_clear_cache_on_exit = 1
+    elseif has('win32')
+      let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+      let g:ctrlp_clear_cache_on_exit = 1
+    else
+      let g:ctrlp_user_command = ''
+      let g:ctrlp_clear_cache_on_exit = 0
+    endif
   endif
 endif
 
