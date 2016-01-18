@@ -440,10 +440,15 @@ endif
 
 "tern.js
 if neobundle#is_sourced('tern_for_vim')
-  autocmd FileType javascript nnoremap <buffer> <silent> gd :TernDef<CR>
+  autocmd FileType javascript nnoremap <buffer> <silent> <C-]> :TernDef<CR>
   autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
   let g:tern_show_argument_hints = 'on_move'
   let g:tern_show_signature_in_pum = 1
+endif
+
+"jedi-vim
+if neobundle#is_sourced('jedi-vim')
+  autocmd FileType python nnoremap <buffer> <silent> <C-]> :call jedi#goto()<CR>
 endif
 
 "Wimproved
