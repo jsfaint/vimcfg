@@ -16,7 +16,7 @@ NeoBundle 'dimasg/vim-mark'
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
-NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'osyo-manga/vim-over', {'disabled': !has('python')}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
@@ -30,11 +30,11 @@ NeoBundle 'scrooloose/nerdtree'
 "C Family
 NeoBundle 'a.vim'
 NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'osyo-manga/vim-marching', {'disabled': !executable('clang')}
+NeoBundle 'osyo-manga/vim-marching', {'disabled': !executable('clang') || !has('python')}
 NeoBundle 'osyo-manga/vim-reunions', {'disabled': !executable('clang')}
 
 "Python
-NeoBundle 'davidhalter/jedi-vim', {'disabled': !executable('python')}
+NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
 
 "Go
 NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
@@ -42,7 +42,7 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 "Web development
 NeoBundle 'chrisbra/colorizer'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ternjs/tern_for_vim', {'disabled': !executable('python')}
+NeoBundle 'ternjs/tern_for_vim', {'disabled': !has('python')}
 
 "Git related
 NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
@@ -55,7 +55,7 @@ NeoBundle 'matchit.zip'
 NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3'}
+NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3', 'disabled': !has('python')}
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
