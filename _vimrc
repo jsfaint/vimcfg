@@ -31,7 +31,6 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'a.vim'
 NeoBundle 'lendyzhang/vim-emax'
 NeoBundle 'osyo-manga/vim-marching', {'disabled': !executable('clang') || !has('python')}
-NeoBundle 'osyo-manga/vim-reunions', {'disabled': !executable('clang')}
 
 "Python
 NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
