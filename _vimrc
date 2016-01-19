@@ -258,7 +258,7 @@ map <silent> <Leader><CR> :noh<CR>
 noremap \m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 "Remove trailing
-nmap <leader>l :%s/\s*$//g<CR>:noh<CR>
+nmap <Leader>l :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
@@ -413,13 +413,13 @@ endif
 
 "undotree
 if neobundle#is_sourced('undotree')
-  nmap <leader>u :UndotreeToggle<CR>
+  nmap <Leader>u :UndotreeToggle<CR>
   let g:undotree_WindowLayout = 2
 endif
 
 "Nerdtree
 if neobundle#is_sourced('nerdtree')
-  nmap <leader>nt :NERDTreeToggle<CR>
+  nmap <Leader>nt :NERDTreeToggle<CR>
 endif
 
 "syntastic
