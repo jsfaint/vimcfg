@@ -55,12 +55,12 @@ NeoBundle 'matchit.zip'
 NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'shougo/context_filetype.vim'
+NeoBundle 'shougo/echodoc.vim'
 NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3', 'disabled': !has('python')}
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
-  NeoBundle 'shougo/context_filetype.vim'
-  NeoBundle 'shougo/echodoc.vim'
   NeoBundle 'shougo/neco-syntax'
   NeoBundle 'shougo/neco-vim'
   NeoBundle 'shougo/neocomplete.vim'
@@ -363,11 +363,11 @@ if neobundle#is_sourced('neocomplete.vim')
   if neobundle#is_sourced('neosnippet.vim')
     let g:neosnippet#enable_snipmate_compatibility = 1
   endif
+endif
 
-  "echodoc.vim
-  if neobundle#is_sourced('echodoc.vim')
-    let g:echodoc_enable_at_startup = 1
-  endif
+"echodoc.vim
+if neobundle#is_sourced('echodoc.vim')
+  let g:echodoc_enable_at_startup = 1
 endif
 
 "CtrlP
