@@ -30,7 +30,7 @@ NeoBundle 'scrooloose/nerdtree'
 "C Family
 NeoBundle 'a.vim'
 NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'osyo-manga/vim-marching', {'disabled': !executable('clang') || !has('python')}
+NeoBundle 'rip-rip/clang_complete', {'disabled': !executable('clang') || !has('python')}
 
 "Python
 NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
@@ -327,12 +327,19 @@ if neobundle#is_sourced('vim-easygrep')
   endif
 endif
 
-"vim-marching
-if neobundle#is_sourced('vim-marching')
-  if neobundle#is_sourced('neocomplete.vim')
-    let g:marching_enable_neocomplete = 1
+"clang_complete
+if neobundle#is_sourced('clang_complete')
+  let g:clang_auto_select = 1
+  let g:clang_hl_errors = 1
+  let g:clang_complete_copen = 1
+  let g:clang_close_preview = 1
+
+  if has('mac')
+    let s:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+    if isdirectory(s:clang_library_path)
+      let g:clang_library_path=s:clang_library_path
+    endif
   endif
-  let g:marching_enable_auto_select = 1
 endif
 
 "neocomplete.vim
