@@ -1,11 +1,10 @@
-vimcfg
-======
+# vimcfg
 
 This repository is my personal Vim configurations, include configuration and plugins.
 The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
 
-Usage
------
+## Usage
+
 1. Install git on your OS
   * For Windows user: Install [windows for git](https://git-for-windows.github.io)
   * For Linux user: Install git via your [package manager](https://en.wikipedia.org/wiki/Package_manager)
@@ -15,13 +14,6 @@ Usage
 
   ```
   git clone https://github.com/jsfaint/vimcfg.git
-  ```
-
-2. Initial submodules (NeoBundle)
-
-  ```
-  cd vimcfg
-  git submodule update --init
   ```
 
 3. Create symbolic links
@@ -69,8 +61,19 @@ Usage
   * `gen_tags.vim` require [ctags](http://ctags.sourceforge.net/) and [GNU global](http://www.gnu.org/software/global/)
   * `tern_for_vim` require install tern (node.js base)
 
-Other
------
+## How to update neobundle.vim
+
+neobundle.vim is managed by git subtree.<br/>
+So if you need to update it. please use the following command.
+
+```
+git subtree pull --prefix vimfiles/bundle/neobundle.vim https://github.com/Shougo/neobundle.vim.git master --squash
+```
+
+Be sure don't forget the paramenter `--squash`, otherwise all the history of subtree will be add to your history.
+
+## Other
+
 For more details about `neobundle`  
 Please refer [here](https://github.com/Shougo/neobundle.vim/blob/master/README.md) or `:help neobundle`
 
