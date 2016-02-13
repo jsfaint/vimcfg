@@ -27,7 +27,7 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! neobundle#init#_rc(path) "{{{
+function! neobundle#init#_rc(path) abort "{{{
   let path =
         \ neobundle#util#substitute_path_separator(
         \ neobundle#util#expand(a:path))
@@ -66,7 +66,7 @@ function! neobundle#init#_rc(path) "{{{
   call neobundle#autoload#init()
 endfunction"}}}
 
-function! neobundle#init#_bundle(bundle) "{{{
+function! neobundle#init#_bundle(bundle) abort "{{{
   if (!has_key(a:bundle, 'type') && get(a:bundle, 'local', 0))
         \ || get(a:bundle, 'type', '') ==# 'nosync'
     " Default type.
@@ -91,7 +91,6 @@ function! neobundle#init#_bundle(bundle) "{{{
           \ 'terminal' : 0,
           \ 'autoload' : {},
           \ 'hooks' : {},
-          \ 'called_hooks' : {},
           \ 'external_commands' : {},
           \ 'build_commands': {},
           \ 'description' : '',
@@ -116,7 +115,6 @@ function! neobundle#init#_bundle(bundle) "{{{
           \ 'on_cmd' : [],
           \ 'on_func' : [],
           \ 'on_map' : [],
-          \ 'on_unite' : [],
           \ 'on_path' : [],
           \ 'on_source' : [],
           \ 'pre_cmd' : [],
@@ -211,13 +209,13 @@ function! neobundle#init#_bundle(bundle) "{{{
   return bundle
 endfunction"}}}
 
-function! s:init_lazy(bundle) "{{{
+function! s:init_lazy(bundle) abort "{{{
   let bundle = a:bundle
 
   " Auto set autoload keys.
   for key in filter([
         \ 'filetypes', 'filename_patterns',
-        \ 'commands', 'functions', 'mappings', 'unite_sources',
+        \ 'commands', 'functions', 'mappings',
         \ 'insert', 'explorer',
         \ 'command_prefix', 'function_prefixes',
         \ ], 'has_key(bundle, v:val)')
@@ -232,7 +230,6 @@ function! s:init_lazy(bundle) "{{{
         \ 'commands' : 'on_cmd',
         \ 'functions' : 'on_func',
         \ 'mappings' : 'on_map',
-        \ 'unite_sources' : 'on_unite',
         \ 'insert' : 'on_i',
         \ 'explorer' : 'on_path',
         \ 'on_source' : 'on_source',
@@ -252,7 +249,7 @@ function! s:init_lazy(bundle) "{{{
   " Auto convert2list.
   for key in filter([
         \ 'on_ft', 'on_path', 'on_cmd',
-        \ 'on_func', 'on_map', 'on_unite',
+        \ 'on_func', 'on_map',
         \ 'on_source', 'pre_cmd', 'pre_func',
         \ ], "type(bundle[v:val]) != type([])
         \")
@@ -263,12 +260,12 @@ function! s:init_lazy(bundle) "{{{
     " Set lazy flag automatically
     let bundle.lazy = bundle.on_i
           \ || !empty(filter(['on_ft', 'on_path', 'on_cmd',
-          \                  'on_func', 'on_map', 'on_unite', 'on_source'],
+          \                  'on_func', 'on_map', 'on_source'],
           \                 '!empty(bundle[v:val])'))
   endif
 endfunction"}}}
 
-function! s:init_depends(bundle) "{{{
+function! s:init_depends(bundle) abort "{{{
   let bundle = a:bundle
   let _ = []
 
@@ -288,7 +285,7 @@ function! s:init_depends(bundle) "{{{
   let bundle.depends = _
 endfunction"}}}
 
-function! s:check_version(min_version) "{{{
+function! s:check_version(min_version) abort "{{{
   let versions = split(a:min_version, '\.')
   let major = get(versions, 0, 0)
   let minor = get(versions, 1, 0)
