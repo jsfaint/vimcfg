@@ -263,8 +263,6 @@ neobundle#load_toml({filename}, [{options}])
 		  'Shougo/context_filetype.vim']
 		on_i = 1
 		on_ft = 'snippet'
-		on_unite = [ 'neosnippet',
-		  'neosnippet/user', 'neosnippet/runtime']
 
 		  [[plugins.depends]]
 		  repo = 'honza/vim-snippet'
@@ -1102,11 +1100,6 @@ OPTIONS 					*neobundle-options*
 			name		(String) or (List)
 			Command name or the list of command names.
 
-			complete	(String)
-			The type of completion supported for the
-			input.  Refer to |:command-completion| for
-			information.
-
 			Example: >
 		NeoBundle 'Shougo/vimfiler.vim', {
 		      \ 'depends' : 'Shougo/unite.vim',
@@ -1153,15 +1146,6 @@ OPTIONS 					*neobundle-options*
 		nmap N <Plug>(anzu-jump-N)<Plug>(anzu-echo-search-status)zv
 <
 						*neobundle-options-mappings*
-		It is deprecated key.
-
-						*neobundle-options-on_unite*
-		on_unite	(List) or (String)
-		Unite source name list.
-		Note: To use this feature, you must install latest
-		|unite.vim|.
-
-					*neobundle-options-unite_sources*
 		It is deprecated key.
 
 						*neobundle-options-on_i*
@@ -1255,7 +1239,6 @@ OPTIONS 					*neobundle-options*
 	      \ }
 	NeoBundle 'Shougo/junkfile.vim', {
 	      \   'on_cmd' : 'JunkfileOpen',
-	      \   'on_unite' : ['junkfile', 'junkfile/new'],
 	      \ }
 	NeoBundle 'tyru/winmove.vim', {
 	      \ 'on_map' : [
