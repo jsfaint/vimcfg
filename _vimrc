@@ -66,8 +66,6 @@ if has('lua')
   NeoBundle 'shougo/neoinclude.vim'
   NeoBundle 'shougo/neosnippet-snippets'
   NeoBundle 'shougo/neosnippet.vim'
-else
-  NeoBundle 'ajh17/VimCompletesMe'
 endif
 
 if has('mac')
@@ -448,7 +446,6 @@ endif
 if neobundle#is_sourced('tern_for_vim')
   autocmd FileType javascript nnoremap <buffer> <silent> <C-]> :TernDef<CR>
   autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
-  let g:tern_show_argument_hints = 'on_move'
   let g:tern_show_signature_in_pum = 1
 endif
 
