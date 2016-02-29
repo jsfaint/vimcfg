@@ -1,5 +1,9 @@
 [![Stories in Ready](https://badge.waffle.io/Shougo/neobundle.vim.png)](https://waffle.io/Shougo/neobundle.vim)
 
+**Note**: Active developement on NeoBundle has stopped. The only future changes will be bug fixes.
+
+Please see [Dein.vim](https://github.com/Shougo/dein.vim) -- A faster, well-tested plugin manager for Vim and Neovim. It can do everything NeoBundle does, including asynchronous installs.
+
 ## About
 
 NeoBundle is a next generation Vim plugin manager. This plugin is based on
