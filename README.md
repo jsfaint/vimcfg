@@ -54,12 +54,12 @@ The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
   Some plugins require external command.
   * `fencview` require vim has `iconv` feature and an external lib `iconv.dll` for windows.
   * `neocomplete` require vim has `if_lua` feature.
-  * `vim-marching` require Clang for C-family completion.
-  * `syntastic` need to install external checker for different language.
+  * `clang_complete` require Clang for C-family completion.
+  * `syntastic` need to install external checker for different filetype.
   * `vimproc` need to build C code to dll on windows, which will auto build for Linux and OS X.
   * `vim-go` need to install binary tool via `:GoInstallBinaries`
   * `gen_tags.vim` require [ctags](http://ctags.sourceforge.net/) and [GNU global](http://www.gnu.org/software/global/)
-  * `tern_for_vim` require install tern (node.js base)
+  * `tern_for_vim` require install tern (node.js based)
 
 ## How to update neobundle.vim
 
@@ -74,7 +74,7 @@ Be sure don't forget the paramenter `--squash`, otherwise all the history of sub
 
 ## Other
 
-For more details about `neobundle`  
+For more details about `neobundle`</br>
 Please refer [here](https://github.com/Shougo/neobundle.vim/blob/master/README.md) or `:help neobundle`
 
 And also you can fork this repository, if you want to custom your own configuration.

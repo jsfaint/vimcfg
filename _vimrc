@@ -137,21 +137,12 @@ if has("gui_running")
     au GUIEnter * simalt ~x
   endif
 
-  if neobundle#is_sourced('molokai')
-    colorscheme molokai
-  endif
-
   set guioptions-=b "Bottom scrollbar
   set guioptions-=r "Right-hand scrollbar
   set guioptions-=L "Left-hand scrollbar
   set guioptions-=T "Toolbar
   set guioptions-=m "Menu bar
   set guioptions+=c "console dialogs
-else
-  if neobundle#is_sourced('molokai')
-    colorscheme molokai
-    let g:rehash256 = 1
-  endif
 endif
 
 autocmd BufEnter * :syntax sync fromstart
@@ -458,6 +449,12 @@ endif
 if neobundle#is_sourced('wimproved.vim')
   autocmd GUIEnter * silent! WToggleClean
   map <F11> :WToggleFullscreen<CR>
+endif
+
+"Molokai
+if neobundle#is_sourced('molokai')
+  colorscheme molokai
+  let g:rehash256 = 1
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
