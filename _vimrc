@@ -16,7 +16,7 @@ NeoBundle 'dimasg/vim-mark'
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
-NeoBundle 'osyo-manga/vim-over', {'disabled': !has('python')}
+NeoBundle 'osyo-manga/vim-over', {'disabled': !(has('python') || has('python3'))}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
@@ -30,10 +30,10 @@ NeoBundle 'scrooloose/nerdtree'
 "C Family
 NeoBundle 'a.vim'
 NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'rip-rip/clang_complete', {'disabled': !executable('clang') || !has('python')}
+NeoBundle 'justmao945/vim-clang', {'disabled': !executable('clang')}
 
 "Python
-NeoBundle 'davidhalter/jedi-vim', {'disabled': !has('python')}
+NeoBundle 'davidhalter/jedi-vim', {'disabled': !(has('python') || has('python3'))}
 
 "Go
 NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
@@ -41,7 +41,7 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 "Web development
 NeoBundle 'chrisbra/colorizer'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'ternjs/tern_for_vim', {'disabled': !has('python')}
+NeoBundle 'ternjs/tern_for_vim', {'disabled': !(has('python') || has('python3'))}
 
 "Git related
 NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
@@ -56,7 +56,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/context_filetype.vim'
 NeoBundle 'shougo/echodoc.vim'
-NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3', 'disabled': !has('python')}
+NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3', 'disabled': !(has('python') || has('python3'))}
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
@@ -313,21 +313,6 @@ if neobundle#is_sourced('vim-easygrep')
   else
     set grepprg=''
     let EasyGrepCommand = 0
-  endif
-endif
-
-"clang_complete
-if neobundle#is_sourced('clang_complete')
-  let g:clang_auto_select = 1
-  let g:clang_hl_errors = 1
-  let g:clang_complete_copen = 1
-  let g:clang_close_preview = 1
-
-  if has('mac')
-    let s:clang_library_path="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
-    if isdirectory(s:clang_library_path)
-      let g:clang_library_path=s:clang_library_path
-    endif
   endif
 endif
 
