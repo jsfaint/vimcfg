@@ -54,7 +54,7 @@ The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
   Some plugins require external command.
   * `fencview` require vim has `iconv` feature and an external lib `iconv.dll` for windows.
   * `neocomplete` require vim has `if_lua` feature.
-  * `clang_complete` require Clang for C-family completion.
+  * `vim-clang` require Clang for C-family completion.
   * `syntastic` need to install external checker for different filetype.
   * `vimproc` need to build C code to dll on windows, which will auto build for Linux and OS X.
   * `vim-go` need to install binary tool via `:GoInstallBinaries`
