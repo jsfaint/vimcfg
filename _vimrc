@@ -343,6 +343,10 @@ if neobundle#is_sourced('neocomplete.vim')
   if neobundle#is_sourced('neosnippet.vim')
     let g:neosnippet#enable_snipmate_compatibility = 1
   endif
+
+  if neobundle#is_sourced('vim-clang')
+    let g:clang_auto = 0
+  endif
 endif
 
 "echodoc.vim
