@@ -129,7 +129,7 @@ if has("win32")
 elseif has("macunix")
   set guifont=Sauce\ Code\ Powerline:h12
 elseif has("unix")
-  set guifont=Sauce\ Code\ Powerline\ 11
+  set guifont=Sauce\ Code\ Powerline\ 10
 endif
 
 if has("gui_running")
@@ -454,7 +454,7 @@ endif
 function! Load_extra()
   "Extra setting out of vimrc
   if has("win32")
-    let l:extra_conf = expand("$VIM/extra.vim")
+    let l:extra_conf = expand("$VIM/vimfiles/extra.vim")
   elseif has("unix")
     let l:extra_conf = expand("$HOME/.vim/extra.vim")
   endif

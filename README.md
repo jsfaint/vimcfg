@@ -25,15 +25,12 @@ The plugins are managed by [neobundle](https://github.com/Shougo/neobundle.vim).
     ```
 
   * Windows
-    You can create quick link to c:/Users/[uername]/.vim
-    But maybe it's easier to install vim into the vimcfg folder.
-
-    If you install vim into vimcfg folder the treeview will like below:
+    Install vim into the vimcfg diretory and the treeview should like below:
 
     ```
     vimcfg
     +-- .git
-    +-- vim74
+    +-- vim74 (vim install directory)
     +-- vimfiles
     +-- .gitignore
     +-- .gitmodules
