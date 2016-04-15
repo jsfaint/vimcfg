@@ -320,12 +320,6 @@ endif
 if neobundle#is_sourced('neocomplete.vim')
   inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
   inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
 
   if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
@@ -339,15 +333,21 @@ if neobundle#is_sourced('neocomplete.vim')
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
 
-  "neosnippet
-  if neobundle#is_sourced('neosnippet.vim')
-    let g:neosnippet#enable_snipmate_compatibility = 1
-  endif
-
   "vim-clang
   if neobundle#is_sourced('vim-clang')
     let g:clang_auto = 0
   endif
+endif
+
+"neosnippet
+if neobundle#is_sourced('neosnippet.vim')
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)"
+        \: "\<TAB>"
+  let g:neosnippet#enable_snipmate_compatibility = 1
 endif
 
 "echodoc.vim
@@ -367,8 +367,6 @@ if neobundle#is_sourced('ctrlp.vim')
     let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
     let g:ctrlp_clear_cache_on_exit = 1
   endif
-
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 endif
 
 "Mark
