@@ -344,6 +344,7 @@ if neobundle#is_sourced('neocomplete.vim')
     let g:neosnippet#enable_snipmate_compatibility = 1
   endif
 
+  "vim-clang
   if neobundle#is_sourced('vim-clang')
     let g:clang_auto = 0
   endif
@@ -357,24 +358,17 @@ endif
 "CtrlP
 if neobundle#is_sourced('ctrlp.vim')
   let g:ctrlp_mruf_relative = 1
-  let g:ctrlp_regexp = 1
   let g:ctrlp_max_files = 0
 
-  if executable('pt')
-    let g:ctrlp_user_command = 'pt -g . %s'
+  if has('unix')
+    let g:ctrlp_user_command = 'find %s -type f'
     let g:ctrlp_clear_cache_on_exit = 1
-  else
-    if has('unix')
-      let g:ctrlp_user_command = 'find %s -type f'
-      let g:ctrlp_clear_cache_on_exit = 1
-    elseif has('win32')
-      let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
-      let g:ctrlp_clear_cache_on_exit = 1
-    else
-      let g:ctrlp_user_command = ''
-      let g:ctrlp_clear_cache_on_exit = 0
-    endif
+  elseif has('win32')
+    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+    let g:ctrlp_clear_cache_on_exit = 1
   endif
+
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 endif
 
 "Mark
