@@ -14,9 +14,11 @@ endif
 NeoBundle 'bling/vim-airline'
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
+NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree'
 NeoBundle 'osyo-manga/vim-over', {'disabled': !(has('python') || has('python3'))}
+NeoBundle 'raimondi/delimitmate'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
@@ -40,7 +42,6 @@ NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
 
 "Web development
 NeoBundle 'chrisbra/colorizer'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'ternjs/tern_for_vim', {'disabled': !(has('python') || has('python3'))}
 
 "Git related
@@ -50,8 +51,6 @@ NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
 "Coding
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'matchit.zip'
-NeoBundle 'raimondi/delimitmate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/context_filetype.vim'
@@ -333,21 +332,21 @@ if neobundle#is_sourced('neocomplete.vim')
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
 
+  "neosnippet
+  if neobundle#is_sourced('neosnippet.vim')
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+          \ "\<Plug>(neosnippet_expand_or_jump)"
+          \: "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+          \ "\<Plug>(neosnippet_expand_or_jump)"
+          \: "\<TAB>"
+    let g:neosnippet#enable_snipmate_compatibility = 1
+  endif
+
   "vim-clang
   if neobundle#is_sourced('vim-clang')
     let g:clang_auto = 0
   endif
-endif
-
-"neosnippet
-if neobundle#is_sourced('neosnippet.vim')
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
-  let g:neosnippet#enable_snipmate_compatibility = 1
 endif
 
 "echodoc.vim
