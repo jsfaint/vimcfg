@@ -23,6 +23,9 @@ NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'itchyny/vim-cursorword'
+NeoBundle 't9md/vim-choosewin'
 
 "Search, Explore
 NeoBundle 'ctrlpvim/ctrlp.vim'
@@ -435,6 +438,19 @@ endif
 if neobundle#is_sourced('molokai')
   colorscheme molokai
   let g:rehash256 = 1
+endif
+
+"incsearch.vim
+if neobundle#is_sourced('incsearch.vim')
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+endif
+
+"vim-choosewin
+if neobundle#is_sourced('vim-choosewin')
+  nmap - <Plug>(choosewin)
+  let g:choosewin_overlay_enable = 1
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
