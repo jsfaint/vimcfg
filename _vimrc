@@ -274,12 +274,18 @@ endif
 "Disable expandtab for makefile
 autocmd FileType make setlocal noexpandtab
 
-"Setting for VimL
+"Filetype Settings
+"VimL
 autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType vim nnoremap <buffer> <silent> K :execute("help " . expand("<cword>"))<CR>
 
+"HTML, javascript
 autocmd FileType html,javascript setlocal expandtab shiftwidth=2 softtabstop=2
+
+"JSON
+autocmd InsertEnter *.json setlocal conceallevel=2 concealcursor=
+autocmd InsertLeave *.json setlocal conceallevel=2 concealcursor=inc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
