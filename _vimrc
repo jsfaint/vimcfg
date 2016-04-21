@@ -11,41 +11,41 @@ elseif has("unix")
 endif
 
 "Enhanced
-NeoBundle 'bling/vim-airline'
 NeoBundle 'dimasg/vim-mark'
-NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
-NeoBundle 'matchit.zip'
-NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
-NeoBundle 'mbbill/undotree'
-NeoBundle 'osyo-manga/vim-over', {'disabled': !(has('python') || has('python3'))}
-NeoBundle 'raimondi/delimitmate'
-NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
-NeoBundle 'shougo/vimshell.vim'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'itchyny/vim-cursorword'
+NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
+NeoBundle 'matchit.zip', {'lazy': 1, 'on_map': ['%', 'g%']}
+NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
+NeoBundle 'mbbill/undotree', {'lazy': 1, 'on_cmd': 'UndotreeToggle'}
+NeoBundle 'osyo-manga/vim-over', {'lazy': 1, 'on_cmd': 'OverCommandLine', 'disabled': !(has('python') || has('python3'))}
+NeoBundle 'raimondi/delimitmate'
+NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
+NeoBundle 'shougo/vimshell.vim', {'on_cmd': [{'name' : 'VimShell', 'complete' : 'customlist,vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop'], 'on_map': '<Plug>'}
 NeoBundle 't9md/vim-choosewin'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'tpope/vim-speeddating', {'lazy': 1, 'on_map': ['<C-a>', '<C-x>']}
+NeoBundle 'vim-airline/vim-airline'
 
 "Search, Explore
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'dkprice/vim-easygrep'
-NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree', {'lazy': 1, 'on_cmd': 'NERDTree'}
 
 "C Family
-NeoBundle 'a.vim'
+NeoBundle 'a.vim', {'lazy': 1, 'on_ft': ['c', 'cpp']}
+NeoBundle 'justmao945/vim-clang', {'lazy': 1, 'on_ft': ['c', 'cpp'], 'disabled': !executable('clang')}
 NeoBundle 'lendyzhang/vim-emax'
-NeoBundle 'justmao945/vim-clang', {'disabled': !executable('clang')}
 
 "Python
-NeoBundle 'davidhalter/jedi-vim', {'disabled': !(has('python') || has('python3'))}
+NeoBundle 'davidhalter/jedi-vim', {'lazy': 1, 'on_ft': 'python', 'disabled': !(has('python') || has('python3'))}
 
 "Go
-NeoBundle 'fatih/vim-go', {'disabled': !executable('go')}
+NeoBundle 'fatih/vim-go', {'lazy': 1, 'on_ft': 'go', 'on_cmd': ['GoInstallBinaries', 'GoUpdateBinries', 'GoPath'], 'disabled': !executable('go')}
 
 "Web development
-NeoBundle 'chrisbra/colorizer'
-NeoBundle 'ternjs/tern_for_vim', {'disabled': !(has('python') || has('python3'))}
+NeoBundle 'chrisbra/colorizer', {'lazy': 1, 'on_ft': ['css', 'html', 'javascript']}
+NeoBundle 'ternjs/tern_for_vim', {'lazy': 1, 'on_ft': 'javascript', 'disabled': !(has('python') || has('python3'))}
 
 "Git related
 NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
@@ -56,9 +56,9 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/context_filetype.vim'
-NeoBundle 'shougo/echodoc.vim'
-NeoBundle 'shougo/vinarise.vim', {'vim_version': '7.3', 'disabled': !(has('python') || has('python3'))}
+NeoBundle 'shougo/context_filetype.vim', {'lazy': 1, 'on_source': 'echodoc.vim'}
+NeoBundle 'shougo/echodoc.vim', {'lazy': 1, 'on_i': 1}
+NeoBundle 'shougo/vinarise.vim', {'lazy': 1, 'on_cmd': ['Vinarise', 'VinariseDump'], 'disabled': !(has('python') || has('python3'))}
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
@@ -71,7 +71,7 @@ if has('lua')
 endif
 
 if has('mac')
-  NeoBundle 'rizzatti/dash.vim'
+  NeoBundle 'rizzatti/dash.vim', {'lazy': 1, 'on_cmd': 'Dash'}
 endif
 
 call neobundle#end()
@@ -285,7 +285,7 @@ autocmd FileType html,javascript setlocal expandtab shiftwidth=2 softtabstop=2
 " => Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "A
-if neobundle#is_sourced('a.vim')
+if neobundle#is_installed('a.vim')
   let g:alternateNoDefaultAlternate = 1
 endif
 
@@ -347,14 +347,9 @@ if neobundle#is_sourced('neocomplete.vim')
   endif
 
   "vim-clang
-  if neobundle#is_sourced('vim-clang')
+  if neobundle#is_installed('vim-clang')
     let g:clang_auto = 0
   endif
-endif
-
-"echodoc.vim
-if neobundle#is_sourced('echodoc.vim')
-  let g:echodoc_enable_at_startup = 1
 endif
 
 "CtrlP
@@ -389,17 +384,6 @@ else
   set showmode
 endif
 
-"undotree
-if neobundle#is_sourced('undotree')
-  nmap <Leader>u :UndotreeToggle<CR>
-  let g:undotree_WindowLayout = 2
-endif
-
-"Nerdtree
-if neobundle#is_sourced('nerdtree')
-  nmap <Leader>nt :NERDTreeToggle<CR>
-endif
-
 "syntastic
 if neobundle#is_sourced('syntastic')
   let g:syntastic_aggregate_errors = 1
@@ -417,14 +401,14 @@ if neobundle#is_sourced('syntastic')
 endif
 
 "tern.js
-if neobundle#is_sourced('tern_for_vim')
+if neobundle#is_installed('tern_for_vim')
   autocmd FileType javascript nnoremap <buffer> <silent> <C-]> :TernDef<CR>
   autocmd FileType javascript nnoremap <buffer> <silent> K :TernDoc<CR>
   let g:tern_show_signature_in_pum = 1
 endif
 
 "jedi-vim
-if neobundle#is_sourced('jedi-vim')
+if neobundle#is_installed('jedi-vim')
   autocmd FileType python nnoremap <buffer> <silent> <C-]> :call jedi#goto()<CR>
 endif
 
