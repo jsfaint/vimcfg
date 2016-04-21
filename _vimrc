@@ -358,6 +358,11 @@ if neobundle#is_sourced('neocomplete.vim')
   endif
 endif
 
+"echodoc.vim
+if neobundle#is_installed('echodoc.vim')
+  let g:echodoc_enable_at_startup = 1
+endif
+
 "CtrlP
 if neobundle#is_sourced('ctrlp.vim')
   let g:ctrlp_mruf_relative = 1
