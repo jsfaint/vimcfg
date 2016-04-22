@@ -49,7 +49,7 @@ NeoBundle 'chrisbra/colorizer', {'on_ft': ['css', 'html', 'javascript']}
 NeoBundle 'ternjs/tern_for_vim', {'on_ft': 'javascript', 'on_i': 1, 'disabled': !(has('python') || has('python3')), 'build': 'npm install'}
 
 "Git related
-NeoBundle 'mhinz/vim-signify', {'disabled': !executable('git')}
+NeoBundle 'airblade/vim-gitgutter', {'disabled': !executable('git')}
 NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
 
 "Coding
