@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent off
 
-if has("win32")
+if has("win32") || has('win64')
   set rtp+=$VIM/vimfiles/bundle/neobundle.vim/
   call neobundle#begin('$VIM/vimfiles/bundle')
 elseif has("unix")
@@ -15,7 +15,7 @@ endif
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'itchyny/vim-cursorword'
-NeoBundle 'kkoenig/wimproved.vim', {'disabled': !has('win32')}
+NeoBundle 'kkoenig/wimproved.vim', {'disabled': !(has('win32') || has('win64'))}
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
@@ -162,7 +162,7 @@ if neobundle#is_sourced('ctrlp.vim')
   if has('unix')
     let g:ctrlp_user_command = 'find %s -type f'
     let g:ctrlp_clear_cache_on_exit = 1
-  elseif has('win32')
+  elseif has('win32') || has('win64')
     let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
     let g:ctrlp_clear_cache_on_exit = 1
   endif

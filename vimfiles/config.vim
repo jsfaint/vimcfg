@@ -30,7 +30,7 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 let $LANG = 'en_US.UTF-8'
 set langmenu=en_US
-if has('win32')
+if has('win32') || has('win64')
   source $VIMRUNTIME/delmenu.vim
   source $VIMRUNTIME/menu.vim
 endif
@@ -39,7 +39,7 @@ endif
 syntax enable
 
 "set GUI font
-if has("win32")
+if has("win32") || has('win64')
   set guifont=Sauce\ Code\ Powerline:h10
 elseif has("macunix")
   set guifont=Sauce\ Code\ Powerline:h12
@@ -48,7 +48,7 @@ elseif has("unix")
 endif
 
 if has("gui_running")
-  if has("win32")
+  if has("win32") || has('win64')
     au GUIEnter * simalt ~x
   endif
 
@@ -180,7 +180,7 @@ endfunction
 call Make_undodir()
 
 "Enable/Disable IME
-if has('gui_running') && has("win32")
+if has('gui_running') && (has("win32") || has('win64'))
   autocmd! InsertLeave * set imdisable
   autocmd! InsertEnter * set noimdisable
   noremap / :set noimdisable<CR>/
