@@ -116,7 +116,6 @@ set magic
 
 "No sound on errors.
 set noerrorbells
-set visualbell
 
 set ffs=unix,dos
 
