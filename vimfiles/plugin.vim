@@ -14,7 +14,6 @@ endif
 "Enhanced
 NeoBundle 'dimasg/vim-mark'
 NeoBundle 'haya14busa/incsearch.vim'
-NeoBundle 'itchyny/vim-cursorword'
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !(has('win32') || has('win64'))}
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
@@ -23,7 +22,6 @@ NeoBundle 'osyo-manga/vim-over', {'on_cmd': 'OverCommandLine', 'disabled': !(has
 NeoBundle 'raimondi/delimitmate'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim', {'on_cmd': [{'name' : 'VimShell', 'complete' : 'customlist,vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop'], 'on_map': '<Plug>'}
-NeoBundle 't9md/vim-choosewin'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-speeddating', {'on_map': ['<C-a>', '<C-x>']}
 NeoBundle 'vim-airline/vim-airline'
@@ -230,8 +228,7 @@ if neobundle#is_sourced('incsearch.vim')
   map g/ <Plug>(incsearch-stay)
 endif
 
-"vim-choosewin
-if neobundle#is_sourced('vim-choosewin')
-  nmap - <Plug>(choosewin)
-  let g:choosewin_overlay_enable = 1
+"undotree
+if neobundle#is_installed('undotree')
+  let g:undotree_WindowLayout = 2
 endif
