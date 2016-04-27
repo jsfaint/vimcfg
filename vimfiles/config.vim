@@ -50,6 +50,9 @@ endif
 if has("gui_running")
   if has("win32") || has('win64')
     au GUIEnter * simalt ~x
+    if has('directx')
+      set renderoptions=type:directx,renmode:5,taamode:1
+    endif
   endif
 
   set guioptions-=b "Bottom scrollbar
