@@ -148,7 +148,7 @@ if neobundle#is_sourced('neocomplete.vim')
 endif
 
 "vim-clang
-if neobundle#is_installed('')
+if neobundle#is_installed('vim-clang')
   let g:clang_check_syntax_auto = 1
   let g:clang_c_completeopt = "menuone,noinsert"
   let g:clang_verbose_pmenu = 1
