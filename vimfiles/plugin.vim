@@ -147,6 +147,13 @@ if neobundle#is_sourced('neocomplete.vim')
   endif
 endif
 
+"vim-clang
+if neobundle#is_installed('')
+  let g:clang_check_syntax_auto = 1
+  let g:clang_c_completeopt = "menuone,noinsert"
+  let g:clang_verbose_pmenu = 1
+endif
+
 "echodoc.vim
 if neobundle#is_installed('echodoc.vim')
   let g:echodoc_enable_at_startup = 1
