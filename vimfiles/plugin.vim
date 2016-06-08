@@ -33,18 +33,18 @@ NeoBundle 'scrooloose/nerdtree', {'on_cmd': 'NERDTree'}
 
 "C Family
 NeoBundle 'a.vim', {'on_ft': ['c', 'cpp']}
-NeoBundle 'justmao945/vim-clang', {'on_ft': ['c', 'cpp'], 'on_i': 1, 'disabled': !executable('clang')}
+NeoBundle 'justmao945/vim-clang', {'on_ft': ['c', 'cpp'], 'disabled': !executable('clang')}
 NeoBundle 'lendyzhang/vim-emax'
 
 "Python
 NeoBundle 'davidhalter/jedi-vim', {'on_ft': 'python', 'disabled': !(has('python') || has('python3'))}
 
 "Go
-NeoBundle 'fatih/vim-go', {'on_ft': 'go', 'on_cmd': ['GoInstallBinaries', 'GoUpdateBinaries', 'GoPath'], 'on_i': 1, 'disabled': !executable('go')}
+NeoBundle 'fatih/vim-go', {'on_ft': 'go', 'on_cmd': ['GoInstallBinaries', 'GoUpdateBinaries', 'GoPath'], 'disabled': !executable('go')}
 
 "Web development
 NeoBundle 'chrisbra/colorizer', {'on_ft': ['css', 'html', 'javascript']}
-NeoBundle 'ternjs/tern_for_vim', {'on_ft': 'javascript', 'on_i': 1, 'disabled': !(has('python') || has('python3')), 'build': 'npm install'}
+NeoBundle 'ternjs/tern_for_vim', {'on_ft': 'javascript', 'disabled': !(has('python') || has('python3')) || !executable('npm'), 'build': 'npm install'}
 
 "Git related
 NeoBundle 'airblade/vim-gitgutter', {'disabled': !executable('git')}
