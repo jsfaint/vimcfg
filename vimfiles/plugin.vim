@@ -61,7 +61,6 @@ NeoBundle 'shougo/vinarise.vim', {'on_cmd': ['Vinarise', 'VinariseDump'], 'disab
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
-  NeoBundle 'hrsh7th/vim-neco-calc'
   NeoBundle 'shougo/neco-syntax'
   NeoBundle 'shougo/neco-vim'
   NeoBundle 'shougo/neocomplete.vim'
