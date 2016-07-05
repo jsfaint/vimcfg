@@ -69,10 +69,6 @@ if has('lua')
   NeoBundle 'shougo/neosnippet.vim'
 endif
 
-if has('mac')
-  NeoBundle 'rizzatti/dash.vim', {'on_cmd': 'Dash'}
-endif
-
 call neobundle#end()
 
 NeoBundleCheck
