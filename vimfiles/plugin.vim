@@ -58,6 +58,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'shougo/context_filetype.vim', {'on_source': 'echodoc.vim'}
 NeoBundle 'shougo/echodoc.vim', {'on_i': 1}
 NeoBundle 'shougo/vinarise.vim', {'on_cmd': ['Vinarise', 'VinariseDump'], 'disabled': !(has('python') || has('python3'))}
+NeoBundle 'thirtythreeforty/lessspace.vim'
 NeoBundle 'yggdroot/indentline'
 if has('lua')
   NeoBundle 'honza/vim-snippets'
