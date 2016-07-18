@@ -124,11 +124,6 @@ if neobundle#is_installed('neocomplete.vim')
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
-
-  "vim-clang
-  if neobundle#is_installed('vim-clang')
-    let g:clang_auto = 0
-  endif
 endif
 
 "neosnippet
@@ -144,9 +139,12 @@ endif
 
 "vim-clang
 if neobundle#is_installed('vim-clang')
-  let g:clang_check_syntax_auto = 1
+  if neobundle#is_installed('neocomplete.vim')
+    let g:clang_auto = 0
+  endif
   let g:clang_c_completeopt = "menuone,noinsert"
   let g:clang_verbose_pmenu = 1
+  let g:clang_format_style = 'webkit'
 endif
 
 "echodoc.vim
