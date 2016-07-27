@@ -18,6 +18,7 @@ NeoBundle 'kkoenig/wimproved.vim', {'disabled': !(has('win32') || has('win64'))}
 NeoBundle 'matchit.zip', {'on_map': '%'}
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
+NeoBundle 'miyakogi/conoline.vim'
 NeoBundle 'osyo-manga/vim-over', {'on_cmd': 'OverCommandLine', 'disabled': !(has('python') || has('python3'))}
 NeoBundle 'raimondi/delimitmate', {'on_i': 1}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
