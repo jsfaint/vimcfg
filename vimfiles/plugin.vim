@@ -95,6 +95,7 @@ if neobundle#is_installed('vim-easygrep')
   let EasyGrepReplaceWindowMode = 2
   let EasyGrepJumpToMatch = 0
   let g:EasyGrepFilesToExclude = "GPATH,GRTAGS,GTAGS"
+  let EasyGrepWindowPosition = "botright"
 
   if executable('pt')
     set grepprg=pt
