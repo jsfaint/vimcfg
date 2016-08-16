@@ -30,7 +30,6 @@ NeoBundle 'vim-airline/vim-airline'
 "Search, Explore
 NeoBundle 'ctrlpvim/ctrlp.vim', {'on_map': '<C-p>', 'on_cmd': 'CtrlP'}
 NeoBundle 'dkprice/vim-easygrep', {'on_map': ['<Leader>vv', '<Leader>vr', '<Leader>vR'], 'on_cmd': 'Grep'}
-NeoBundle 'scrooloose/nerdtree', {'on_cmd': 'NERDTree'}
 
 "C Family
 NeoBundle 'a.vim', {'on_ft': ['c', 'cpp']}
