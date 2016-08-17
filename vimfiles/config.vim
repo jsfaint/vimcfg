@@ -173,7 +173,7 @@ nmap <Leader>l :%s/\s*$//g<CR>:noh<CR>
 
 "persistent undo
 function! Make_undodir()
-  if version >= 703 && has('persistent_undo')
+  if has('persistent_undo')
     let l:dir = expand("$HOME/.cache/undodir")
     set undofile
     exec 'set undodir=' . l:dir
