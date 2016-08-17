@@ -143,7 +143,7 @@ if neobundle#is_installed('vim-clang')
   if neobundle#is_installed('neocomplete.vim')
     let g:clang_auto = 0
   endif
-  let g:clang_c_completeopt = "menuone,noinsert"
+
   let g:clang_verbose_pmenu = 1
   let g:clang_format_style = 'webkit'
 endif

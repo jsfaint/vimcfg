@@ -135,6 +135,10 @@ nmap <Leader>cd :cd %:p:h<CR>
 
 set completeopt+=menuone
 
+if has('patch-7.4.775')
+  set completeopt+=noinsert
+endif
+
 "Turn backup off
 set nobackup
 set nowritebackup
