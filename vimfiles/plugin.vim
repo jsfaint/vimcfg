@@ -15,7 +15,7 @@ endif
 NeoBundle 'dimasg/vim-mark', {'on_map': ['<Leader>m', '<Leader>n'], 'on_cmd': ['Mark', 'MarkClear']}
 NeoBundle 'haya14busa/incsearch.vim'
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !(has('win32') || has('win64'))}
-NeoBundle 'matchit.zip', {'on_map': '%'}
+NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
 NeoBundle 'miyakogi/conoline.vim'
