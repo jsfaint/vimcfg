@@ -55,8 +55,8 @@ NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdcommenter', {'on_map': ['<Leader>cc', '<Leader>cu', '<Leader>cb', '<Leader>cs']}
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'shougo/context_filetype.vim', {'on_source': 'context_filetype.vim'}
-NeoBundle 'shougo/echodoc.vim', {'on_i': 1}
+NeoBundle 'shougo/context_filetype.vim', {'on_i': 1}
+NeoBundle 'shougo/echodoc.vim', {'on_source': 'context_filetype.vim'}
 NeoBundle 'shougo/vinarise.vim', {'on_cmd': ['Vinarise', 'VinariseDump'], 'disabled': !(has('python') || has('python3'))}
 NeoBundle 'thirtythreeforty/lessspace.vim', {'on_i': 1}
 NeoBundle 'yggdroot/indentline'
