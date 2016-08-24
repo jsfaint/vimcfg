@@ -49,6 +49,7 @@ NeoBundle 'ternjs/tern_for_vim', {'on_ft': 'javascript', 'disabled': !(has('pyth
 "Git related
 NeoBundle 'airblade/vim-gitgutter', {'disabled': !executable('git')}
 NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
+NeoBundle 'gregsexton/gitv', {'on_cmd': 'Gitv', 'disabled': !neobundle#is_installed('vim-fugitive')}
 
 "Coding
 NeoBundle 'jsfaint/gen_tags.vim'
