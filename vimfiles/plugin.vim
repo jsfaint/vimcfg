@@ -147,6 +147,11 @@ if neobundle#is_installed('vim-clang')
 
   let g:clang_verbose_pmenu = 1
   let g:clang_format_style = 'webkit'
+
+  if has('patch-7.4.775')
+    let g:clang_c_completeopt = 'menuone,noinsert,preview'
+    let g:clang_cpp_completeopt = 'menuone,noinsert,preview'
+  endif
 endif
 
 "echodoc.vim
