@@ -1,6 +1,6 @@
 bin
 global
-vim74
+vim[0-9]*
 vimfiles/.netrwhist
 vimfiles/bundle
 vimfiles/extra.vim
