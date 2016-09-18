@@ -23,7 +23,6 @@ NeoBundle 'osyo-manga/vim-over', {'on_cmd': 'OverCommandLine', 'disabled': !(has
 NeoBundle 'raimondi/delimitmate', {'on_i': 1}
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim', {'on_cmd': [{'name' : 'VimShell', 'complete' : 'customlist,vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop'], 'on_map': '<Plug>'}
-NeoBundle 'tomasr/molokai'
 NeoBundle 'tpope/vim-speeddating', {'on_map': ['<C-a>', '<C-x>']}
 NeoBundle 'vim-airline/vim-airline'
 
@@ -222,12 +221,6 @@ endif
 if neobundle#is_installed('wimproved.vim')
   autocmd GUIEnter * silent! WToggleClean
   map <F11> :WToggleFullscreen<CR>
-endif
-
-"Molokai
-if neobundle#is_installed('molokai')
-  colorscheme molokai
-  let g:rehash256 = 1
 endif
 
 "incsearch.vim

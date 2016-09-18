@@ -65,6 +65,8 @@ endif
 
 autocmd BufEnter * :syntax sync fromstart
 
+colorscheme desert
+
 set nocursorline
 
 "Set 7 lines to the cursor - when moving vertical..
