@@ -20,7 +20,7 @@ NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
 NeoBundle 'mbbill/undotree', {'on_cmd': 'UndotreeToggle'}
 NeoBundle 'miyakogi/conoline.vim'
 NeoBundle 'osyo-manga/vim-over', {'on_cmd': 'OverCommandLine', 'disabled': !(has('python') || has('python3'))}
-NeoBundle 'raimondi/delimitmate', {'on_i': 1}
+NeoBundle 'raimondi/delimitmate'
 NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim', {'on_cmd': [{'name' : 'VimShell', 'complete' : 'customlist,vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop'], 'on_map': '<Plug>'}
 NeoBundle 'tpope/vim-speeddating', {'on_map': ['<C-a>', '<C-x>']}
