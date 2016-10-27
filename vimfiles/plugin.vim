@@ -66,7 +66,7 @@ NeoBundle 'shougo/neosnippet.vim', {'on_i': 1}
 NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua')}
 NeoBundle 'shougo/neco-syntax', {'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
 NeoBundle 'shougo/neco-vim', {'on_ft': 'vim', 'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
-NeoBundle 'shougo/neoinclude.vim', {'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
+NeoBundle 'shougo/neoinclude.vim', {'disabled': !neobundle#is_installed('neocomplete.vim')}
 
 call neobundle#end()
 
