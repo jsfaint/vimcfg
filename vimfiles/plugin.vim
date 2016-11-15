@@ -51,6 +51,7 @@ NeoBundle 'tpope/vim-fugitive', {'disabled': !executable('git')}
 NeoBundle 'gregsexton/gitv', {'on_cmd': 'Gitv', 'disabled': !neobundle#is_installed('vim-fugitive')}
 
 "Coding
+NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'jsfaint/gen_tags.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/nerdcommenter', {'on_map': ['<Leader>cc', '<Leader>cu', '<Leader>cb', '<Leader>cs']}
@@ -233,4 +234,9 @@ endif
 "undotree
 if neobundle#is_installed('undotree')
   let g:undotree_WindowLayout = 2
+endif
+
+"editorconfig-vim
+if neobundle#is_installed('editorconfig-vim')
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 endif
