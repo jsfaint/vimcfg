@@ -99,8 +99,8 @@ if neobundle#is_installed('vim-easygrep')
   let g:EasyGrepFilesToExclude = "GPATH,GRTAGS,GTAGS"
   let EasyGrepWindowPosition = "botright"
 
-  if executable('pt')
-    set grepprg=pt\ --nogroup\ --nocolor
+  if executable('rg')
+    set grepprg=rg\ --vimgrep
     let EasyGrepCommand = 1
   elseif executable('grep')
     set grepprg=grep
@@ -166,17 +166,11 @@ if neobundle#is_installed('ctrlp.vim')
   let g:ctrlp_max_files = 0
   let g:ctrlp_clear_cache_on_exit = 1
 
-  if executable('pt')
-    set grepprg=pt\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'pt %s -i --nocolor --nogroup --hidden -g ""'
-  else
-    if has('unix')
-      let g:ctrlp_user_command = 'find %s -type f'
-    elseif has('win32') || has('win64')
-      let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
-    endif
+  if has('unix')
+    let g:ctrlp_user_command = 'find %s -type f'
+  elseif has('win32') || has('win64')
+    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
   endif
-
 
   if neobundle#is_installed('ctrlp-py-matcher')
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
