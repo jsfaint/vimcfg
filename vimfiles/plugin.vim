@@ -59,7 +59,6 @@ NeoBundle 'scrooloose/nerdcommenter', {'on_map': ['<Leader>cc', '<Leader>cu', '<
 NeoBundle 'vim-syntastic/syntastic'
 NeoBundle 'shougo/context_filetype.vim', {'on_i': 1, 'disabled': !has('patch-7.4.774')}
 NeoBundle 'shougo/echodoc.vim', {'on_source': 'context_filetype.vim', 'disabled': !has('patch-7.4.774')}
-NeoBundle 'shougo/vinarise.vim', {'on_cmd': ['Vinarise', 'VinariseDump'], 'disabled': !(has('python') || has('python3'))}
 NeoBundle 'thirtythreeforty/lessspace.vim', {'on_i': 1}
 NeoBundle 'yggdroot/indentline'
 NeoBundle 'honza/vim-snippets', {'on_source': 'neosnippet.vim'}
