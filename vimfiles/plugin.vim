@@ -13,7 +13,7 @@ endif
 
 "Enhanced
 NeoBundle 'dimasg/vim-mark', {'on_map': ['<Leader>m', '<Leader>n'], 'on_cmd': ['Mark', 'MarkClear']}
-NeoBundle 'haya14busa/incsearch.vim'
+NeoBundle 'haya14busa/incsearch.vim', {'on_map': ['/', '?', 'g/']}
 NeoBundle 'kkoenig/wimproved.vim', {'disabled': !(has('win32') || has('win64'))}
 NeoBundle 'matchit.zip'
 NeoBundle 'mbbill/fencview', {'disabled': !has('iconv')}
@@ -224,7 +224,7 @@ if neobundle#is_installed('wimproved.vim')
 endif
 
 "incsearch.vim
-if neobundle#is_installed('incsearch.vim')
+if neobundle#is_sourced('incsearch.vim')
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
