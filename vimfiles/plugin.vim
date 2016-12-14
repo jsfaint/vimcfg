@@ -42,9 +42,8 @@ NeoBundle 'davidhalter/jedi-vim', {'on_ft': 'python', 'disabled': !(has('python'
 "Go
 NeoBundle 'fatih/vim-go', {'on_ft': 'go', 'on_cmd': ['GoInstallBinaries', 'GoUpdateBinaries', 'GoPath'], 'disabled': !executable('go')}
 
-"Web development
-NeoBundle 'chrisbra/colorizer', {'on_ft': ['css', 'html', 'javascript']}
-NeoBundle 'ternjs/tern_for_vim', {'on_ft': 'javascript', 'disabled': !(has('python') || has('python3')) || !executable('npm'), 'build': 'npm update'}
+"javascript
+NeoBundle 'ternjs/tern_for_vim', {'disabled': !(has('python') || has('python3')) || !executable('npm'), 'build': 'npm update'}
 
 "Git related
 NeoBundle 'airblade/vim-gitgutter', {'disabled': !executable('git')}
