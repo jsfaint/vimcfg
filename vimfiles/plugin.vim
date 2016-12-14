@@ -29,12 +29,12 @@ NeoBundle 'vim-airline/vim-airline'
 "Search, Explore
 NeoBundle 'ctrlpvim/ctrlp.vim', {'on_map': '<C-p>', 'on_cmd': 'CtrlP'}
 NeoBundle 'dkprice/vim-easygrep', {'on_map': ['<Leader>vv', '<Leader>vr', '<Leader>vR'], 'on_cmd': 'Grep'}
-NeoBundle 'felikz/ctrlp-py-matcher', {'on_source': 'ctrlp.vim', 'disabled': !(has('python') || has('python3')) || !neobundle#is_installed('ctrlp.vim')}
+NeoBundle 'felikz/ctrlp-py-matcher', {'disabled': !(has('python') || has('python3')) || !neobundle#is_installed('ctrlp.vim')}
 
 "C Family
 NeoBundle 'a.vim', {'on_ft': ['c', 'cpp']}
 NeoBundle 'justmao945/vim-clang', {'on_ft': ['c', 'cpp'], 'disabled': !executable('clang')}
-NeoBundle 'lendyzhang/vim-emax', {'on_ft': ['c', 'cpp']}
+NeoBundle 'lendyzhang/vim-emax'
 
 "Python
 NeoBundle 'davidhalter/jedi-vim', {'on_ft': 'python', 'disabled': !(has('python') || has('python3'))}
@@ -65,7 +65,7 @@ NeoBundle 'shougo/neosnippet-snippets', {'on_source': 'neosnippet.vim'}
 NeoBundle 'shougo/neosnippet.vim', {'on_i': 1}
 NeoBundle 'shougo/neocomplete.vim', {'disabled': !has('lua')}
 NeoBundle 'shougo/neco-syntax', {'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
-NeoBundle 'shougo/neco-vim', {'on_ft': 'vim', 'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
+NeoBundle 'shougo/neco-vim', {'on_source': 'neocomplete.vim', 'disabled': !neobundle#is_installed('neocomplete.vim')}
 NeoBundle 'shougo/neoinclude.vim', {'disabled': !neobundle#is_installed('neocomplete.vim')}
 
 call neobundle#end()
