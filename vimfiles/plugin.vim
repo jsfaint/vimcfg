@@ -213,6 +213,7 @@ endif
 
 "jedi-vim
 if neobundle#is_installed('jedi-vim')
+  let g:jedi#show_call_signatures = 2
   autocmd FileType python nnoremap <buffer> <silent> <C-]> :call jedi#goto()<CR>
 endif
 
