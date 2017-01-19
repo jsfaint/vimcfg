@@ -135,6 +135,7 @@ set statusline=%m\%F%r\ %w%=%y\ L:%l/%L\ C:%c\ (%p%%)
 "Switch to current directory
 nmap <Leader>cd :cd %:p:h<CR>
 
+set shortmess+=c
 set completeopt+=menuone
 
 if has('patch-7.4.775')
