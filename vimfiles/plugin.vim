@@ -117,14 +117,16 @@ if neobundle#is_installed('neocomplete.vim')
   if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
     let g:neocomplete#sources#omni#input_patterns.c =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)'
+          \ '\h\w*\|[^. \t]\.\w*\|[^.[:digit:] *\t]\%(\.\|->\)'
     let g:neocomplete#sources#omni#input_patterns.cpp =
-          \'[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+          \'\h\w*\|[^. \t]\.\w*\|[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    '
   endif
 
   let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#auto_completion_start_length = 1
 endif
 
 "neosnippet
