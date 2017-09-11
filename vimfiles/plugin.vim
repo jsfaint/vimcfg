@@ -25,6 +25,7 @@ NeoBundle 'shougo/vimproc.vim', {'build': {'unix': 'make'}}
 NeoBundle 'shougo/vimshell.vim', {'on_cmd': [{'name' : 'VimShell', 'complete' : 'customlist,vimshell#complete'}, 'VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop'], 'on_map': '<Plug>'}
 NeoBundle 'tpope/vim-speeddating', {'on_map': ['<C-a>', '<C-x>']}
 NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'jsfaint/purge_undodir.vim'
 
 "Search, Explore
 NeoBundle 'ctrlpvim/ctrlp.vim', {'on_map': '<C-p>', 'on_cmd': 'CtrlP'}
